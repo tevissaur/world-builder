@@ -1,0 +1,21 @@
+@mixin nav-button {
+    a {
+        display: inline-block;
+        text-align: left;
+        font-size: 18px;
+        color: black;
+        padding: 5px;
+        background-color: rgba(255, 215, 170, 1);
+        border: 3px outset brown;
+        text-decoration: none;
+    }
+    a:hover {
+        background-color: #a78861;
+        border: 3px inset rgb(165, 42, 4);
+    }
+}
+@mixin root-nav-button {
+     .dropdown-content .dropdown:hover {
+        display: block;
+    }
+}

@@ -1,0 +1,16 @@
+module.exports = {
+    Character: require('./Character'),
+    City: require('./City'),
+    Class: require('./Class'),
+    God: require('./God'),
+    History: require('./History'),
+    Country: require('./Country'),
+    Monster: require('./Monster'),
+    Organization: require('./Organization'),
+    Quote: require('./Quote'),
+    Race: require('./Race'),
+    Region: require('./Region'),
+    Religion: require('./Religion'),
+    User: require('./User'),
+    // World: require('./World'),
+}
