@@ -26,10 +26,16 @@ const typeDefs = gql`
         _id: ID
         name: String
     }
+    
+    type Government {
+        members: [Character]
+        style: String
+    }
 
     type Country {
         _id: ID
         name: String
+        government: Government
     }
 
     type Query {

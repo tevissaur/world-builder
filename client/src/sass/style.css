@@ -1,6 +1,14 @@
+:root {
+  --chocolate-traditional: #7A4002ff;
+  --harvest-gold: #CF8C04ff;
+  --english-lavender: #A68189ff;
+}
+body {
+  margin: 0px;
+}
 html {
   scroll-behavior: smooth;
-  background-image: url("/assets/Forene_Map.png");
+  background: var(--harvest-gold);
   background-position: top center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -9,13 +17,13 @@ html {
 .wiki-site-wrapper {
   display: -ms-grid;
   display: grid;
-      grid-template-areas: "nav nav nav nav nav nav nav nav" "pt pt pt pt pt pt pt pt" "quote quote quote quote quote quote right right" "left left left left left left right right" "f f f f f f f f";
+  grid-template-areas: "nav nav nav nav nav nav nav nav""pt pt pt pt pt pt pt pt""quote quote quote quote quote quote right right""left left left left left left right right""f f f f f f f f";
   grid-gap: 0;
   margin: 5% auto;
   height: 90%;
   width: 60%;
   -webkit-box-shadow: 0 0 10px #111111ad;
-          box-shadow: 0 0 10px #111111ad;
+  box-shadow: 0 0 10px #111111ad;
   background-color: rgba(255, 235, 212, 0.85);
 }
 
@@ -29,10 +37,10 @@ html {
   grid-column: 1 / 9;
   display: -ms-grid;
   display: grid;
-      grid-template-areas: "logo logo title title title title title title" "logo logo nav-links nav-links nav-links nav-links nav-links nav-links";
+  grid-template-areas: "logo logo title title title title title title""logo logo nav-links nav-links nav-links nav-links nav-links nav-links";
   -webkit-box-pack: left;
-      -ms-flex-pack: left;
-          justify-content: left;
+  -ms-flex-pack: left;
+  justify-content: left;
   font-weight: bold;
   height: -webkit-min-content;
   height: -moz-min-content;
@@ -153,7 +161,7 @@ html {
   text-align: center;
   width: 100%;
   -webkit-box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-          box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
 }
 
 .wiki-site-wrapper nav .dropdown:hover .dropdown-content {
@@ -184,6 +192,7 @@ html {
   background-color: black;
   width: 90%;
 }
+
 .wiki-site-wrapper #quote-container {
   -ms-grid-row: 2;
   -ms-grid-column: 1;
@@ -315,7 +324,7 @@ html {
   -ms-grid-row: 3;
   grid-row-start: 3;
   -webkit-transform: translate(0, -2px);
-          transform: translate(0, -2px);
+  transform: translate(0, -2px);
 }
 
 .wiki-site-wrapper .main-page-right .article-container {
@@ -353,11 +362,11 @@ html {
   -ms-grid-column-span: 8;
   grid-area: f;
   -ms-grid-columns: bl bl bm bm bm br br br;
-      grid-template-columns: bl bl bm bm bm br br br;
+  grid-template-columns: bl bl bm bm bm br br br;
   padding: 10px;
 }
 
-.wiki-site-wrapper footer > section {
+.wiki-site-wrapper footer>section {
   border: 4px ridge #a52a2a;
   margin: 0 5px;
 }
@@ -437,7 +446,7 @@ html {
   border: none;
   border-radius: 10px;
   -webkit-box-shadow: 0 9px #999;
-          box-shadow: 0 9px #999;
+  box-shadow: 0 9px #999;
 }
 
 .wiki-site-wrapper footer .bottom-m .download-button:hover {
@@ -447,9 +456,9 @@ html {
 .wiki-site-wrapper footer .bottom-m .download-button:active {
   background-color: #a52a2a;
   -webkit-box-shadow: 0 5px #666;
-          box-shadow: 0 5px #666;
+  box-shadow: 0 5px #666;
   -webkit-transform: translateY(4px);
-          transform: translateY(4px);
+  transform: translateY(4px);
 }
 
 .wiki-site-wrapper footer .bottom-m h2 {
@@ -478,4 +487,5 @@ html {
 .wiki-site-wrapper footer .top-button a:hover {
   color: #7a2020;
 }
+
 /*# sourceMappingURL=main.css.map */
