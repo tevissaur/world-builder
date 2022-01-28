@@ -30,7 +30,7 @@ function HideOnScroll(props) {
 const AppBar = styled(MuiAppBar, { shouldForwardProp: (prop) => prop !== 'open', })(({ theme, open }) => ({
     background: '#201209',
     transition: theme.transitions.create(['width'], {
-        easing: theme.transitions.easing.sharp,
+        easing: theme.transitions.easing.easeOut,
         duration: theme.transitions.duration.leavingScreen,
     }),
     ...(open && {

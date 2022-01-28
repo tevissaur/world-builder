@@ -1,6 +1,7 @@
 import * as React from 'react';
-import { Box, Avatar, Menu, MenuItem, ListItemIcon, Divider, IconButton, Typography, Tooltip, Link } from '@mui/material'
+import { Box, Avatar, Menu, MenuItem, ListItemIcon, Divider, IconButton, Typography, Tooltip, Link, Button } from '@mui/material'
 import { PersonAdd, Settings, Logout } from '@mui/icons-material'
+import auth from '../utils/auth';
 
 export default function AccountMenu() {
     const [anchorEl, setAnchorEl] = React.useState(null);
@@ -82,8 +83,9 @@ export default function AccountMenu() {
                     </ListItemIcon>
                     Settings
                 </MenuItem>
-                <MenuItem>
+                <MenuItem onClick={() => auth.logout()}> 
                     <ListItemIcon>
+
                         <Logout fontSize="small" />
                     </ListItemIcon>
                     Logout
