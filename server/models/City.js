@@ -4,10 +4,12 @@ const citySchema = new Schema({
     name: {
         type: String,
     },
-    country: {
-        type: Schema.Types.ObjectId,
-        ref: 'Country'
-    }
+    notableCharacters: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: 'Character'
+        }
+    ]
 })
 
 const City = model('City', citySchema)

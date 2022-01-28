@@ -19,15 +19,15 @@ export default function Nav(props) {
 
         <div className="nav-container">
           <div className="dropdown">
-            <a href="wiki/home"> Home </a>
+            <a href="home"> Home </a>
           </div>
           <div className="dropdown">
-            <a href="wiki/bestiary"> Bestiary</a>
+            <a href="bestiary"> Bestiary</a>
 
           </div>
 
           <div className="dropdown">
-            <a href="wiki/races">Races</a>
+            <a href="races">Races</a>
             <div className="dropdown-content">
               <a href="/wiki">Humans</a>
               <a href="/wiki">Dwarves</a>
@@ -39,7 +39,7 @@ export default function Nav(props) {
             </div>
           </div>
           <div className="dropdown">
-            <a href="wiki/geography"> Geography</a>
+            <a href="geography"> Geography</a>
             <div className="dropdown-content">
               <a href="/wiki">The Human Realms</a>
               <a href="/wiki">The Elven Domains</a>
@@ -48,10 +48,10 @@ export default function Nav(props) {
             </div>
           </div>
           <div className="dropdown">
-            <a href="wiki/history">History</a>
+            <a href="history">History</a>
           </div>
           <div className="dropdown">
-            <a href="wiki/pantheons"> Pantheons</a>
+            <a href="pantheons"> Pantheons</a>
             <div className="dropdown-content">
               <a href="pantheons.html#">The Gods of the Empire</a>
               <a href="pantheons.html#">The Convent of the Commons</a>
@@ -63,7 +63,7 @@ export default function Nav(props) {
             </div>
           </div>
           <div className="dropdown">
-            <a href="wiki/organizations"> Organizations</a>
+            <a href="organizations"> Organizations</a>
             <div className="dropdown-content">
               <a href="organizations.html#">The Black Order</a>
               <a href="organizations.html#">Sycamore Circle</a>

@@ -45,6 +45,24 @@ let religionIds = [
     ObjectId(),
 ]
 
+let userIds = [
+    ObjectId(),
+    ObjectId(),
+    ObjectId(),
+]
+
+let worldIds = [
+    ObjectId(),
+    ObjectId(),
+    ObjectId(),
+]
+
+let regionIds = [
+    ObjectId(),
+    ObjectId(),
+    ObjectId(),
+    ObjectId(),
+]
 
 
 const characterData = [
@@ -230,6 +248,24 @@ const raceData = [
     }
 ]
 
+const regionData = [
+    {
+        _id: regionIds[0],
+        name: 'The Northern Realms',
+        countries: [
+            countryIds[0],
+            countryIds[2],
+        ]
+    },
+    {
+        _id: regionIds[1],
+        name: 'The Southern Reach',
+        countries: [
+            countryIds[1]
+        ]
+    }
+]
+
 const religionData = [
     {
         _id: religionIds[0],
@@ -254,6 +290,29 @@ const religionData = [
     }
 ]
 
+const worldData = [
+    {
+        _id: worldIds[0],
+        name: 'Aerden',
+        creator: userIds[0],
+        regions: [
+            regionIds[0],
+            regionIds[1]
+        ]
+    }
+]
+
+const userData = {
+        _id: userIds[0],
+        username: 'Tevissaur',
+        email: 'tevis@email.com',
+        password: 'pass12345',
+        worlds: [
+            worldIds[0]
+        ]
+    }
+
+
 
 
 
@@ -264,7 +323,10 @@ db.once('open', async () => {
     await Country.deleteMany({})
     await God.deleteMany({})
     await Race.deleteMany({})
+    await Region.deleteMany({})
     await Religion.deleteMany({})
+    await User.deleteMany({})
+    await World.deleteMany({})
 
     const characters = await Character.insertMany(characterData)
     const cities = await City.insertMany(cityData)
@@ -276,10 +338,11 @@ db.once('open', async () => {
     // const organizations = await Organization.insertMany(orgData)
     // const quotes = await Quote.insertMany(quoteData)
     const races = await Race.insertMany(raceData)
-    // const regions = await Region.insertMany(regionData)
+    const regions = await Region.insertMany(regionData)
     const religions = await Religion.insertMany(religionData)
+    const users = await User.create(userData)
     // const users = await User.insertMany(userData)
-    // // const worlds = await World.insertMany(worldData)
+    const worlds = await World.insertMany(worldData)
 
     console.log('all done!')
     process.exit(0)

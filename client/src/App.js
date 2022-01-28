@@ -4,6 +4,10 @@ import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
 
 import './sass/style.css';
 import MainLayout from './pages/MainLayout';
+import { styled, useTheme, ThemeProvider } from '@mui/material/styles';
+import { purple, green } from '@mui/material/colors';
+
+import { createTheme } from '@mui/system';
 
 
 const client = new ApolloClient({
@@ -12,11 +16,17 @@ const client = new ApolloClient({
 });
 
 
+
+
 function App() {
+  
 
   return (
     <ApolloProvider client={client}>
-      <MainLayout />
+
+
+        <MainLayout />
+
     </ApolloProvider>
   )
 }
