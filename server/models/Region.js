@@ -10,13 +10,13 @@ const regionSchema = new Schema({
     },
     countries: [
         {
-            type: String,
+            type: Schema.Types.ObjectId,
             ref: 'Country'
         }
     ],
     monsters: [
         {
-            type: String,
+            type: Schema.Types.ObjectId,
             ref: 'Monster'
         }
     ]

@@ -12,5 +12,5 @@ module.exports = {
     Region: require('./Region'),
     Religion: require('./Religion'),
     User: require('./User'),
-    // World: require('./World'),
+    World: require('./World'),
 }

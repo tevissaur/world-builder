@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
 import { useQuery } from '@apollo/client'
-import { QUERY_CHARACTERS } from '../utils/queries'
+// import { QUERY_CHARACTERS } from '../utils/queries'
 
 export default function Quote(props) {
 
-    const handleAuthor = () => {
+    // const handleAuthor = () => {
         
-    }
+    // }
 
     return (
         <section id="quote-container">

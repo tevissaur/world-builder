@@ -1,10 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 // import logo from './logo.svg';
 
 import './sass/style.css';
-import WikiPageLayout from './pages/WikiPageLayout';
+import MainLayout from './pages/MainLayout';
+import { styled, useTheme, ThemeProvider } from '@mui/material/styles';
+import { purple, green } from '@mui/material/colors';
+
+import { createTheme } from '@mui/system';
+
 
 const client = new ApolloClient({
   uri: '/graphql',
@@ -12,19 +16,17 @@ const client = new ApolloClient({
 });
 
 
-function App() {
 
+
+function App() {
+  
 
   return (
     <ApolloProvider client={client}>
-      <Router>
-        <Routes>
-          <Route path="/wiki" element={<WikiPageLayout />}>
 
-          </Route>
-        </Routes>
-      </Router>
-      
+
+        <MainLayout />
+
     </ApolloProvider>
   )
 }
