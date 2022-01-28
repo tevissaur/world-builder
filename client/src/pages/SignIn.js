@@ -35,7 +35,6 @@ export default function SignInSide() {
 
     return (
         <ThemeProvider theme={theme}>
-            <LandingPageNav />
             <Grid container component="main" sx={{ height: '95vh', marginTop: '5vh' }}>
                 <CssBaseline />
                 <Grid

@@ -50,7 +50,6 @@ export default function SignUp() {
 
     return (
         <ThemeProvider theme={theme}>
-            <LandingPageNav />
             <Container component="main" sx={{ height: '94vh', marginTop: '5vh' }} maxWidth="xs">
                 <CssBaseline />
                 <Box

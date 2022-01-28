@@ -1,4 +1,4 @@
-const { Character, Country, Class, City, Race, User } = require('../models')
+const { Character, Country, Class, City, Race, User, World } = require('../models')
 
 const { signToken } = require('../utils/auth')
 
@@ -33,6 +33,20 @@ const resolvers = {
                     }
                 }
             })
+        },
+        worlds: async (parent, args) => {
+            return World.find().populate({
+                    path: 'regions',
+                    model: 'Region',
+                    populate: {
+                        path: 'countries',
+                        model: 'Country',
+                        populate: {
+                            path: 'cities',
+                            model: 'City'
+                        }
+                    }
+                })
         }
     },
     Mutation: {

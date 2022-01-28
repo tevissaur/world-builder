@@ -23,15 +23,7 @@ const LandingPageNav = () => {
                         <Link component={ReactLink} to="/" variant="h5" alignSelf="center" underline="none" color='white'>
                             Welcome to Fantasy World Builder
                         </Link>
-                        <Box alignSelf='center'>
-
-                            <Link component={ReactLink} to='/log-in' underline='none' color='white' fontSize={18} fontFamily='Arial'>
-                                Log In
-                            </Link>
-                            <Link component={ReactLink} to='/sign-up' underline='none' color='white' fontSize={18} fontFamily='Arial' marginLeft={3}>
-                                Sign Up
-                            </Link>
-                        </Box>
+                        
                     </Box>
                 </Toolbar>
             </AppBar>

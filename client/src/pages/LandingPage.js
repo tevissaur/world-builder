@@ -5,13 +5,13 @@ import auth from "../utils/auth";
 
 const LandingPage = (props) => {
 
-    if (auth.loggedIn()) {
-        window.location.pathname = 'dashboard'
-    }
+    // if (auth.loggedIn()) {
+    //     window.location.pathname = 'dashboard'
+    // }
 
     return (
         <>
-            <LandingPageNav />
+            {/* <LandingPageNav /> */}
         </>
     )
 }
