@@ -4,9 +4,9 @@ import { createStore } from 'redux';
 
 // Importing the reducer file that is mostly unchanged
 // import counterReducer from './counterSlice';
-import counterReducer from './reducers'
+import testReducer from './reducers'
 
-const store = createStore(counterReducer)
+const store = createStore(testReducer)
 
 
 export default store

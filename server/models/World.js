@@ -40,7 +40,13 @@ const worldSchema = new Schema({
             type: Schema.Types.ObjectId,
             ref: 'History'
         }
-    ] 
+    ],
+    wikiCategories: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: 'Category'
+        }
+    ]
 })
 
 const World = model('World', worldSchema) 

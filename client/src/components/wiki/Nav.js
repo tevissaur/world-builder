@@ -1,30 +1,30 @@
+import { Typography, Link, Box } from '@mui/material';
 import React from 'react';
-import { Route, Routes } from 'react-router-dom'
+import { Route, Routes, Link as ReactLink } from 'react-router-dom'
+import store from '../../utils/store'
 
 export default function Nav(props) {
+  const state = store.getState()
+
+
 
   return (
     <>
-      <Routes>
-        <Route path="home">
-
-        </Route>
-      </Routes>
       <nav id="nav-bar">
 
         <img className="logo" src="/assets/border.png" alt="This is alt text" />
-
-        <a className="world-name" href="/home">The Continent of Forene</a>
+        <Typography variant='h4' className='world-name'>
+          {state.openWorld.name}
+        </Typography>
 
 
         <div className="nav-container">
-          <div className="dropdown">
-            <a href="home"> Home </a>
-          </div>
-          <div className="dropdown">
-            <a href="bestiary"> Bestiary</a>
-
-          </div>
+          <Box className="dropdown">
+            <Link component={ReactLink} to="/wiki/home"> Home </Link>
+          </Box>
+          <Box className="dropdown">
+            <Link component={ReactLink} to="/wiki/bestiary"> Bestiary </Link>
+          </Box>
 
           <div className="dropdown">
             <a href="races">Races</a>

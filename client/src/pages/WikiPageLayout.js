@@ -1,7 +1,4 @@
 import React from "react"
-
-import { gql, useQuery } from "@apollo/client";
-
 import Nav from '../components/wiki/Nav';
 import Header from '../components/wiki/Header'
 import Quote from '../components/wiki/Quote'
@@ -14,14 +11,14 @@ const WikiPageLayout = (props) => {
 
     return (
         <>
-            <main className="wiki-site-wrapper">
+            <section className="wiki-site-wrapper">
                 <Nav categories={null} />
                 <Header />
                 <Quote />
                 <SectionLeft />
                 <SectionRight />
                 <Footer />
-            </main>
+            </section>
         </>
     )
 }

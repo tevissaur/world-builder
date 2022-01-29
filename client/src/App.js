@@ -7,7 +7,6 @@ import WikiPageLayout from "./pages/WikiPageLayout";
 import LandingPage from './pages/LandingPage'
 import SignInSide from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
-import MainNav from './components/MainNav'
 import { CreateWorld, Main } from './components/dashboard'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 
@@ -34,15 +33,16 @@ function App() {
 
       <Router>
         <Routes>
-          <Route path="/" element={<MainLayout />}>
+          <Route path="/*" element={<MainLayout />}>
             <Route index element={<LandingPage />} />
             <Route path="log-in" element={<SignInSide />} />
             <Route path="sign-up" element={<SignUp />} />
-            <Route path="wiki">
+            <Route path="wiki/*">
               <Route index element={<WikiPageLayout />} />
               <Route path="home" element={<WikiPageLayout />} />
+              <Route path="bestiary" element={<WikiPageLayout />} />
             </Route>
-            <Route path="dashboard" element={<DashboardLayout />}>
+            <Route path="dashboard/*" element={<DashboardLayout />}>
               <Route index element={<Main />} />
               <Route path="create-new-world" element={<CreateWorld />} />
             </Route>

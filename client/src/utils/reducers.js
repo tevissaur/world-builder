@@ -2,16 +2,19 @@
 
 
 const initialState = {
-    value: 0
+    openWorld: {},
+    worlds: [],
+    username: '',
+    games: []
 }
 
-export default function counterReducer(state = initialState, action) {
+export default function testReducer(state = initialState, action) {
 
     switch (action.type) {
-        case 'counter/incremented':
-            return { ...state, value: state.value + 1 }
-        case 'counter/decremented':
-            return { ...state, value: state.value - 1 }
+        case 'SET_OPEN_WORLD':
+            return { ...state, openWorld: action.payload }
+        case 'SET_WORLDS':
+            return { ...state, worlds: action.payload }
         default:
             return state
     }

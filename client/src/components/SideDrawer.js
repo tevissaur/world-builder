@@ -43,16 +43,16 @@ const SideDrawer = ({ open }) => {
                 <>
                     <List>
                         {/* <ListItem>
-                    <FormControl variant='filled' sx={{ backgroundColor: "white" }} fullWidth>
-                        <InputLabel sx={{ color: 'black' }} id="demo-simple-select-label">Change World</InputLabel>
-                        <Select
-                            labelId="demo-simple-select-label"
-                            id="demo-simple-select"
-                        >
-                        Aerden
-                        </Select>
-                    </FormControl>
-                </ListItem> */}
+                            <FormControl variant='filled' sx={{ backgroundColor: "white" }} fullWidth>
+                                <InputLabel sx={{ color: 'black' }} id="demo-simple-select-label">Change World</InputLabel>
+                                <Select
+                                    labelId="demo-simple-select-label"
+                                    id="demo-simple-select"
+                                >
+                                    Aerden
+                                </Select>
+                            </FormControl>
+                        </ListItem> */}
                         <Link component={ReactLink} to='/dashboard/create-new-world' underline='none' color='white' >
                             <ListItem button sx={{ borderBottom: '1px solid #EAEDD4' }}>
                                 <ListItemIcon sx={{ color: 'white' }}>

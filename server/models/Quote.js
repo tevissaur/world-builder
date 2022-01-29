@@ -15,7 +15,7 @@ const quoteSchema = new Schema({
         },
     },
     author: {
-        type: String,
+        type: Schema.Types.ObjectId,
         ref: 'Character'
     }
 

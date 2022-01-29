@@ -8,6 +8,7 @@ import { useQuery } from '@apollo/client';
 import { GET_ME } from '../utils/queries'
 import auth from '../utils/auth';
 import SideDrawer from './SideDrawer';
+import store from '../utils/store';
 const drawerWidth = 240;
 function HideOnScroll(props) {
     const { children, window } = props;
@@ -44,7 +45,7 @@ const AppBar = styled(MuiAppBar, { shouldForwardProp: (prop) => prop !== 'open',
 }));
 
 const TopNav = ({ open, setOpen }) => {
-
+    const state = store.getState()
 
     const handleDrawer = () => {
         open ? setOpen(false) : setOpen(true)
@@ -66,7 +67,7 @@ const TopNav = ({ open, setOpen }) => {
                     </IconButton>
                     <Box sx={{ display: 'flex', justifyContent: 'space-between', width: '100%' }} >
                         <Link component={ReactLink} to="/dashboard" variant="h6" underline="none" color='white' alignSelf="center">
-                            Aerden
+                            {state.openWorld.name}
                         </Link>
                         {auth.loggedIn() ? (
                             <ProfileNavIcons />

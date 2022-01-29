@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { Avatar, Button, CssBaseline, TextField, FormControlLabel, Checkbox, Link, Grid, Box, Typography, Container } from '@mui/material'
 import { LockRounded } from '@mui/icons-material/';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import LandingPageNav from '../components/LandingPageNav';
 import { CREATE_USER } from '../utils/mutations'
 import { useMutation } from '@apollo/client'
 import auth from '../utils/auth';
