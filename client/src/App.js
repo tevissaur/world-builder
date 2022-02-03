@@ -7,9 +7,8 @@ import WikiPageLayout from "./pages/WikiPageLayout";
 import LandingPage from './pages/LandingPage'
 import SignInSide from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
-import { CreateWorld, Main } from './components/dashboard'
+import { CharacterMain, CreateWorld, Main, PantheonTable } from './components/dashboard'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-
 import { useDispatch, useSelector } from "react-redux";
 
 
@@ -35,6 +34,7 @@ function App() {
         <Routes>
           <Route path="/*" element={<MainLayout />}>
             <Route index element={<LandingPage />} />
+            <Route path="home" element={<LandingPage />}/>
             <Route path="log-in" element={<SignInSide />} />
             <Route path="sign-up" element={<SignUp />} />
             <Route path="wiki/*">
@@ -45,6 +45,9 @@ function App() {
             <Route path="dashboard/*" element={<DashboardLayout />}>
               <Route index element={<Main />} />
               <Route path="create-new-world" element={<CreateWorld />} />
+              <Route path="pantheon" element={<PantheonTable />} />
+              <Route path="characters" element={<CharacterMain />} />
+              <Route path="regions" element={<PantheonTable />} />
             </Route>
 
 

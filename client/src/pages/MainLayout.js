@@ -40,9 +40,8 @@ const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(({
 
 const MainLayout = () => {
     const { data: { _id } } = auth.getProfile()
+    const { drawerOpen } = store.getState()
     const state = store.getState()
-    console.log(state)
-    const [open, setOpen] = useState(true);
     const { data, loading, error } = useQuery(GET_ME, {
         variables: {
             id: _id
@@ -51,24 +50,30 @@ const MainLayout = () => {
 
 
     useEffect(() => {
+        if (error) {
+            console.log(error)
+        } else {
 
-        loading ? console.log(loading) : store.dispatch(setWorldAction(data?.me.worlds[0]))
-
-        loading ? console.log(loading) : store.dispatch(setWorldsAction(data?.me.worlds))
+            loading ? console.log(loading) : store.dispatch(setWorldAction(data?.me.worlds[0]))
+    
+            loading ? console.log(loading) : store.dispatch(setWorldsAction(data?.me.worlds))
+        }
 
     }, [data, loading, _id])
 
+    useEffect(() => {
+        console.log(state)
+    }, [drawerOpen])
 
     return (
         <>
 
             <Box sx={{ display: 'flex' }}>
-                <TopNav open={open} setOpen={setOpen} />
-                <SideDrawer open={open} />
+                <TopNav />
+                <SideDrawer />
 
                 <Main
-                    open={open}
-                    sx={{ p: 3 }}
+                    open={drawerOpen}
                 >
                     <Outlet />
                 </Main>

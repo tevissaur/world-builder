@@ -11,3 +11,18 @@ export const setWorldsAction = (payload) => {
         payload
     }
 }
+
+export const setCharacters = (payload) => {
+    return {
+        type: 'SET_CHARACTERS',
+        payload
+    }
+}
+
+export const setDrawerOpen = (payload) => {
+
+    return {
+        type: 'SET_OPEN',
+        payload
+    }
+}

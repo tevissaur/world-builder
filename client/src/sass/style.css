@@ -13,7 +13,9 @@ html {
   background-size: cover;
   background-repeat: no-repeat;
 }
-
+.nav-button:hover {
+  background-color: #614330;
+} 
 .wiki-site-wrapper {
   display: -ms-grid;
   display: grid;

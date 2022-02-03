@@ -9,6 +9,9 @@ import { GET_ME } from '../utils/queries'
 import auth from '../utils/auth';
 import SideDrawer from './SideDrawer';
 import store from '../utils/store';
+import { setDrawerOpen } from '../utils/actions';
+
+
 const drawerWidth = 240;
 function HideOnScroll(props) {
     const { children, window } = props;
@@ -44,40 +47,86 @@ const AppBar = styled(MuiAppBar, { shouldForwardProp: (prop) => prop !== 'open',
     }),
 }));
 
-const TopNav = ({ open, setOpen }) => {
+const TopNav = () => {
+    const { openWorld, drawerOpen } = store.getState()
     const state = store.getState()
 
-    const handleDrawer = () => {
-        open ? setOpen(false) : setOpen(true)
-    };
 
     return (
         <HideOnScroll>
 
-            <AppBar position="fixed" open={open} >
+            <AppBar position="fixed" open={drawerOpen} >
                 <Toolbar>
                     <IconButton
                         color="inherit"
                         aria-label="open drawer"
-                        onClick={handleDrawer}
+                        onClick={() => store.dispatch(setDrawerOpen(!drawerOpen))}
                         edge="start"
                         sx={{ mr: 2 }}
                     >
                         <Menu />
                     </IconButton>
                     <Box sx={{ display: 'flex', justifyContent: 'space-between', width: '100%' }} >
-                        <Link component={ReactLink} to="/dashboard" variant="h6" underline="none" color='white' alignSelf="center">
-                            {state.openWorld.name}
-                        </Link>
+                        <Box sx={{ display: 'flex', justifyContent: 'flex-start', width: '100%' }}>
+                            <Link component={ReactLink} to="/home"
+                                fontSize={18}
+                                fontFamily='Arial'
+                                underline="none"
+                                marginRight={2}
+                                color='white'
+                                alignSelf="center"
+                                className="nav-button"
+                                paddingX={1}
+                                paddingY={0.4}
+                                borderRadius={0.75}
+                            >
+                                Home
+                            </Link>
+                            <Link component={ReactLink} to="/dashboard"
+                                fontSize={18}
+                                fontFamily='Arial'
+                                underline="none"
+                                marginRight={2}
+                                color='white'
+                                alignSelf="center"
+                                className="nav-button"
+                                paddingX={1}
+                                paddingY={0.4}
+                                borderRadius={0.75}
+                            >
+                                {openWorld.name}
+                            </Link>
+
+                        </Box>
                         {auth.loggedIn() ? (
                             <ProfileNavIcons />
                         ) : (
-                            <Box alignSelf='center'>
+                            <Box sx={{ display: 'flex', justifyContent: 'flex-end', width: '100%' }}>
 
-                                <Link component={ReactLink} to='/log-in' underline='none' color='white' fontSize={18} fontFamily='Arial'>
+                                <Link component={ReactLink} to='/log-in' fontSize={18}
+                                    fontFamily='Arial'
+                                    underline="none"
+                                    marginRight={2}
+                                    color='white'
+                                    alignSelf="center"
+                                    className="nav-button"
+                                    paddingX={1}
+                                    paddingY={0.4}
+                                    borderRadius={0.75}
+                                >
                                     Log In
                                 </Link>
-                                <Link component={ReactLink} to='/sign-up' underline='none' color='white' fontSize={18} fontFamily='Arial' marginLeft={3}>
+                                <Link component={ReactLink} to='/sign-up' fontSize={18}
+                                    fontFamily='Arial'
+                                    underline="none"
+                                    marginRight={2}
+                                    color='white'
+                                    alignSelf="center"
+                                    className="nav-button"
+                                    paddingX={1}
+                                    paddingY={0.4}
+                                    borderRadius={0.75}
+                                >
                                     Sign Up
                                 </Link>
                             </Box>

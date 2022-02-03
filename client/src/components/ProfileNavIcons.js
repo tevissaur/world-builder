@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Box, Avatar, Menu, MenuItem, ListItemIcon, Divider, IconButton, Typography, Tooltip, Link, Button } from '@mui/material'
 import { PersonAdd, Settings, Logout } from '@mui/icons-material'
 import auth from '../utils/auth';
+import { Link as ReactLink } from 'react-router-dom';
 
 export default function AccountMenu() {
     const [anchorEl, setAnchorEl] = React.useState(null);
@@ -15,7 +16,20 @@ export default function AccountMenu() {
     return (
         <React.Fragment>
             <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center' }}>
-                <Typography sx={{ minWidth: 100 }}>Profile</Typography>
+                <Link component={ReactLink} to="/dashboard"
+                    fontSize={18}
+                    fontFamily='Arial'
+                    underline="none"
+                    marginRight={2}
+                    color='white'
+                    alignSelf="center"
+                    className="nav-button"
+                    paddingX={1}
+                    paddingY={0.4}
+                    borderRadius={0.75}
+                >
+                    Profile
+                </Link>
                 <Tooltip title="Account settings">
                     <IconButton
                         onClick={handleClick}
@@ -83,7 +97,7 @@ export default function AccountMenu() {
                     </ListItemIcon>
                     Settings
                 </MenuItem>
-                <MenuItem onClick={() => auth.logout()}> 
+                <MenuItem onClick={() => auth.logout()}>
                     <ListItemIcon>
 
                         <Logout fontSize="small" />

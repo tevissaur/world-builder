@@ -1,11 +1,10 @@
 import { gql } from '@apollo/client'
 
-export const QUERY_CHARACTERS = gql`
+export const ALL_CHARACTERS = gql`
     query AllCharacters {
         characters {
             _id
             name
-            skills
         }
     }
 `
@@ -20,8 +19,22 @@ export const GET_ME = gql`
             name
             countries {
               name
+              cities {
+                name
+              }
             }
           }
+          religions {
+            name
+            gods {
+              name
+              description
+              alignment
+              domains
+              symbol
+            }
+          }
+          
       }
     }
   }

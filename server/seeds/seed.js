@@ -271,21 +271,42 @@ const religionData = [
         _id: religionIds[0],
         name: 'Convent of the Commons',
         gods: [
-
+            godIds[0],
+            godIds[1],
+            godIds[2],
+            godIds[3],
+            godIds[4],
+            godIds[5],
+            godIds[6],
+            godIds[7],
         ]
     },
     {
         _id: religionIds[1],
         name: 'Children of the Light',
         gods: [
-
+            godIds[0],
+            godIds[1],
+            godIds[2],
+            godIds[3],
+            godIds[4],
+            godIds[5],
+            godIds[6],
+            godIds[7],
         ]
     },
     {
         _id: religionIds[2],
         name: 'The Old Ways',
         gods: [
-
+            godIds[0],
+            godIds[1],
+            godIds[2],
+            godIds[3],
+            godIds[4],
+            godIds[5],
+            godIds[6],
+            godIds[7],
         ]
     }
 ]
@@ -298,19 +319,24 @@ const worldData = [
         regions: [
             regionIds[0],
             regionIds[1]
+        ],
+        religions: [
+            religionIds[0],
+            religionIds[1],
+            religionIds[2],
         ]
     }
 ]
 
 const userData = {
-        _id: userIds[0],
-        username: 'Tevissaur',
-        email: 'tevis@email.com',
-        password: 'pass12345',
-        worlds: [
-            worldIds[0]
-        ]
-    }
+    _id: userIds[0],
+    username: 'Tevissaur',
+    email: 'tevis@email.com',
+    password: 'pass12345',
+    worlds: [
+        worldIds[0]
+    ]
+}
 
 
 

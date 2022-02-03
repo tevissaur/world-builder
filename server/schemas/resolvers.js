@@ -21,32 +21,78 @@ const resolvers = {
             return Class.find()
         },
         me: async (parent, { _id }) => {
-            return User.findById(_id).populate({
-                path: 'worlds',
-                model: 'World',
-                populate: {
-                    path: 'regions',
-                    model: 'Region',
-                    populate: {
-                        path: 'countries',
-                        model: 'Country'
-                    }
+            return User.findById(_id).populate(
+                {
+                    path: 'worlds',
+                    model: 'World',
+                    populate: [
+                        {
+                            path: 'regions',
+                            model: 'Region',
+                            populate: {
+                                path: 'countries',
+                                model: 'Country',
+                                populate: [
+                                    {
+                                        path: 'cities',
+                                        model: 'City'
+                                    },
+                                    {
+                                        path: 'religions',
+                                        model: 'Religion',
+                                        populate: {
+                                            path: 'gods',
+                                            model: 'God'
+                                        }
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            path: 'religions',
+                            model: 'Religion',
+                            populate: {
+                                path: 'gods',
+                                model: 'God'
+                            }
+                        }
+                    ]
                 }
-            })
+            )
         },
         worlds: async (parent, args) => {
-            return World.find().populate({
+            return World.find().populate([
+                {
                     path: 'regions',
                     model: 'Region',
                     populate: {
                         path: 'countries',
                         model: 'Country',
-                        populate: {
-                            path: 'cities',
-                            model: 'City'
-                        }
+                        populate: [
+                            {
+                                path: 'cities',
+                                model: 'City'
+                            },
+                            {
+                                path: 'religions',
+                                model: 'Religion',
+                                populate: {
+                                    path: 'gods',
+                                    model: 'God'
+                                }
+                            }
+                        ]
                     }
-                })
+                },
+                {
+                    path: 'religions',
+                    model: 'Religion',
+                    populate: {
+                        path: 'gods',
+                        model: 'God'
+                    }
+                }
+            ])
         }
     },
     Mutation: {

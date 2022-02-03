@@ -5,6 +5,7 @@ import ProfileNavIcons from './ProfileNavIcons'
 import auth from '../utils/auth'
 import { styled } from '@mui/material/styles';
 import { Menu, HomeMax } from '@mui/icons-material'
+import store from "../utils/store"
 
 
 const drawerWidth = 240;
@@ -19,7 +20,10 @@ const DrawerHeader = styled('div')(({ theme }) => ({
 }));
 
 
-const SideDrawer = ({ open }) => {
+const SideDrawer = () => {
+
+    const { drawerOpen } = store.getState()
+
 
     return (
         <Drawer
@@ -34,7 +38,7 @@ const SideDrawer = ({ open }) => {
             }}
             variant="persistent"
             anchor="left"
-            open={open}
+            open={drawerOpen}
         >
             <DrawerHeader>
 
@@ -84,13 +88,31 @@ const SideDrawer = ({ open }) => {
                     </List>
                     <List>
 
-                        <Link component={ReactLink} to='/dashboard' underline='none' color='white' >
+                        <Link component={ReactLink} to='dashboard/pantheon' underline='none' color='white' >
                             <ListItem button>
                                 <ListItemIcon sx={{ color: 'white' }}>
                                     <HomeMax />
                                 </ListItemIcon>
 
-                                <ListItemText primary="Dashboard" />
+                                <ListItemText primary="Pantheon of Deities" />
+                            </ListItem>
+                        </Link>
+                        <Link component={ReactLink} to='dashboard/characters' underline='none' color='white' >
+                            <ListItem button>
+                                <ListItemIcon sx={{ color: 'white' }}>
+                                    <HomeMax />
+                                </ListItemIcon>
+
+                                <ListItemText primary="Characters" />
+                            </ListItem>
+                        </Link>
+                        <Link component={ReactLink} to='dashboard/regions' underline='none' color='white' >
+                            <ListItem button>
+                                <ListItemIcon sx={{ color: 'white' }}>
+                                    <HomeMax />
+                                </ListItemIcon>
+
+                                <ListItemText primary="Regions" />
                             </ListItem>
                         </Link>
                     </List>

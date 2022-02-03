@@ -19,11 +19,26 @@ const typeDefs = gql`
         name: String
         countries: [Country]
     }
+    type God {
+        _id: ID!
+        name: String!
+        description: String!
+        domains: [String]
+        symbol: String!
+        religion: Religion
+        alignment: String
+    }
+    type Religion {
+        _id: ID!
+        name: String
+        gods: [God]
+    }
     type World {
         _id: ID!
         name: String
         creator: User
         regions: [Region]
+        religions: [Religion]
     }
     type User {
         _id: ID!
@@ -56,13 +71,13 @@ const typeDefs = gql`
         name: String
         government: Government
         cities: [City]
+        religions: [Religion]
     }
 
     type Auth {
         token: ID!
         user: User
     }
-
     type Query {
         characters: [Character]!
         cities: [City]!
