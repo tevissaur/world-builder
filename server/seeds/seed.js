@@ -64,6 +64,32 @@ let regionIds = [
     ObjectId(),
 ]
 
+let monsterIds = [
+    ObjectId(),
+    ObjectId(),
+    ObjectId(),
+]
+
+const monsterData = [
+    {
+        _id: monsterIds[0],
+        name: 'Hippogriff',
+        description: 'Half bird, half horse',
+        size: 'Five feet in length',
+    },
+    {
+        _id: monsterIds[1],
+        name: '',
+        description: '',
+        size: '',
+    },
+    {
+        _id: monsterIds[2],
+        name: '',
+        description: '',
+        size: '',
+    },
+]
 
 const characterData = [
     {
@@ -255,6 +281,13 @@ const regionData = [
         countries: [
             countryIds[0],
             countryIds[2],
+        ],
+        landmarks: [
+            {
+                name: 'The Wolf\'s Wall',
+                description: 'Big ol wall'
+            },
+
         ]
     },
     {
@@ -324,6 +357,11 @@ const worldData = [
             religionIds[0],
             religionIds[1],
             religionIds[2],
+        ],
+        characters: [
+            characterIds[0],
+            characterIds[1],
+            characterIds[2],
         ]
     }
 ]

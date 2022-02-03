@@ -13,19 +13,27 @@ const PantheonTable = () => {
 
     return (
         <Box display='flex' justifyContent='center' flexWrap='nowrap' maxWidth='100%'>
-            
-            <Card display='flex' justifyContent='flex-start' flexWrap='wrap' flexDirection='col' >
+
+            {/* <Card display='flex' justifyContent='flex-start' flexWrap='wrap' flexDirection='col' >
                 
-            </Card>
+            </Card> */}
             <Box display='flex' justifyContent='center' flexWrap='wrap' flexDirection='col' >
                 {state.openWorld.religions?.map((religion) => (
 
                     <TableContainer
                         component={Paper}
-                        key={religion.name}
-                        sx={{ marginBottom: 5, maxWidth: '70%' }}
+                        key={religion._id}
+                        sx={{
+                            marginBottom: 5,
+                            maxWidth: '70%'
+                        }}
                     >
-                        <Table sx={{ minWidth: '200px' }} aria-label="simple table">
+                        <Table
+                            sx={{
+                                minWidth: '200px'
+                            }}
+                            aria-label="simple table"
+                        >
                             <TableHead>
                                 <TableRow>
                                     <TableCell
@@ -33,7 +41,11 @@ const PantheonTable = () => {
                                         colSpan={5}
                                     >
 
-                                        <Typography fontSize={24} fontFamily='Arial' textAlign='center' width='100%' margin='auto'>
+                                        <Typography
+                                            fontSize={24} fontFamily='Arial' textAlign='center'
+                                            width='100%'
+                                            margin='auto'
+                                        >
                                             {religion.name}
 
                                         </Typography>
@@ -57,7 +69,7 @@ const PantheonTable = () => {
                             <TableBody>
                                 {religion.gods?.map((god) => (
                                     <TableRow
-                                        key={god.name}
+                                        key={Math.floor(Math.random() * 10000)}
                                         sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                                     >
                                         <TableCell component="th" scope="row" >
@@ -69,7 +81,7 @@ const PantheonTable = () => {
                                         <TableCell align="left">{god.alignment}</TableCell>
                                         <TableCell align="left">
                                             {god.domains.map((domain) => (
-                                                <Typography>
+                                                <Typography key={Math.floor(Math.random() * 10000)}>
                                                     {domain}
                                                 </Typography>
                                             ))}
@@ -83,9 +95,9 @@ const PantheonTable = () => {
                 ))}
 
             </Box>
-            <Card display='flex' justifyContent='flex-end' flexWrap='wrap' flexDirection='col' >
+            {/* <Card display='flex' justifyContent='flex-end' flexWrap='wrap' flexDirection='col' >
                
-            </Card>
+            </Card> */}
 
         </Box>
     );

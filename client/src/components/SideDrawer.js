@@ -1,11 +1,13 @@
 import React from "react"
-import { AppBar as MuiAppBar, Toolbar, Box, Slide, Drawer, List, Link, IconButton, ListItem, ListItemIcon, MenuItem, InputLabel, FormControl, Select, ListItemText, useScrollTrigger } from '@mui/material'
+import { AppBar as MuiAppBar, Toolbar, Box, Slide, Drawer, List, Link, IconButton, ListItem, ListItemIcon, MenuItem, InputLabel, FormControl, Select, ListItemText, NativeSelect, useScrollTrigger } from '@mui/material'
 import { Link as ReactLink } from 'react-router-dom'
 import ProfileNavIcons from './ProfileNavIcons'
 import auth from '../utils/auth'
 import { styled } from '@mui/material/styles';
 import { Menu, HomeMax } from '@mui/icons-material'
 import store from "../utils/store"
+import { GET_WORLD } from "../utils/queries"
+import { useLazyQuery } from "@apollo/client"
 
 
 const drawerWidth = 240;
@@ -21,8 +23,25 @@ const DrawerHeader = styled('div')(({ theme }) => ({
 
 
 const SideDrawer = () => {
+    const { drawerOpen, openWorld, worlds } = store.getState()
 
-    const { drawerOpen } = store.getState()
+    const [getWorld, { data: singleWorldData, loading: singleWorldLoading }] = useLazyQuery(GET_WORLD)
+
+    const handleWorldChange = async (name) => {
+        try {
+
+            const { data: world} = await getWorld({
+                variables: {
+                    name
+                }
+            })
+            console.log(world)
+        } catch (err) {
+            console.log(err)
+        }
+
+    }
+
 
 
     return (
@@ -46,17 +65,17 @@ const SideDrawer = () => {
             {auth.loggedIn() ? (
                 <>
                     <List>
-                        {/* <ListItem>
-                            <FormControl variant='filled' sx={{ backgroundColor: "white" }} fullWidth>
-                                <InputLabel sx={{ color: 'black' }} id="demo-simple-select-label">Change World</InputLabel>
-                                <Select
-                                    labelId="demo-simple-select-label"
-                                    id="demo-simple-select"
-                                >
-                                    Aerden
-                                </Select>
-                            </FormControl>
-                        </ListItem> */}
+                        <FormControl fullWidth>
+
+                            <NativeSelect
+                                defaultValue={openWorld}
+                                onChange={(e) => handleWorldChange(e.target.value)}
+                            >
+                                {worlds?.map((world) => (
+                                    <option color="white" id={world._id} value={world.name} key={world._id}>{world.name}</option>
+                                ))}
+                            </NativeSelect>
+                        </FormControl>
                         <Link component={ReactLink} to='/dashboard/create-new-world' underline='none' color='white' >
                             <ListItem button sx={{ borderBottom: '1px solid #EAEDD4' }}>
                                 <ListItemIcon sx={{ color: 'white' }}>
@@ -113,6 +132,15 @@ const SideDrawer = () => {
                                 </ListItemIcon>
 
                                 <ListItemText primary="Regions" />
+                            </ListItem>
+                        </Link>
+                        <Link component={ReactLink} to='dashboard/bestiary' underline='none' color='white' >
+                            <ListItem button>
+                                <ListItemIcon sx={{ color: 'white' }}>
+                                    <HomeMax />
+                                </ListItemIcon>
+
+                                <ListItemText primary="Bestiary" />
                             </ListItem>
                         </Link>
                     </List>

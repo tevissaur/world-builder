@@ -9,32 +9,55 @@ export const ALL_CHARACTERS = gql`
     }
 `
 
+export const GET_USER_WORLDS = gql`
+    query GetUserWorlds($creator: ID!) {
+      userWorlds(creator: $creator) {
+        _id
+        name
+      }
+
+    }
+`
+
+export const GET_WORLD = gql`
+    query GetWorld($name: String!) {
+      world(name: $name) {
+        _id
+      }
+    }
+`
+
 export const GET_ME = gql`
   query GetMe($id: ID!) {
     me(_id: $id) {
       username
       worlds {
+        _id
+        name
+        regions {
+          _id
           name
-          regions {
+          countries {
+            _id
             name
-            countries {
+            cities {
+              _id
               name
-              cities {
-                name
-              }
             }
           }
-          religions {
+        }
+        religions {
+          _id
+          name
+          gods {
+            _id
             name
-            gods {
-              name
-              description
-              alignment
-              domains
-              symbol
-            }
+            description
+            alignment
+            domains
+            symbol
           }
-          
+        }
       }
     }
   }

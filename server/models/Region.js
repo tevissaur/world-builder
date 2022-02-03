@@ -19,6 +19,12 @@ const regionSchema = new Schema({
             type: Schema.Types.ObjectId,
             ref: 'Monster'
         }
+    ],
+    landmarks: [
+        {
+            name: String,
+            description: String
+        }
     ]
 });
 

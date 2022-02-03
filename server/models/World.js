@@ -5,7 +5,7 @@ const worldSchema = new Schema({
     name: {
         type: String,
         trim: true,
-        required: "Character name is required"
+        required: "World name is required"
     },
     creator: {
         type: Schema.Types.ObjectId,
@@ -46,7 +46,15 @@ const worldSchema = new Schema({
             type: Schema.Types.ObjectId,
             ref: 'Category'
         }
-    ]
+    ],
+    description: {
+        type: String
+    },
+    characters:[ {
+        type: Schema.Types.ObjectId,
+        ref: 'Character'
+    }]
+
 })
 
 const World = model('World', worldSchema) 

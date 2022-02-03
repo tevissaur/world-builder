@@ -93,6 +93,66 @@ const resolvers = {
                     }
                 }
             ])
+        },
+        userWorlds: async (parent, { creator }) => {
+            try {
+                const worlds = await World.find({ creator })
+                console.log(worlds)
+                return worlds
+            } catch (err) {
+                console.log(err)
+                return err
+            }
+        },
+        world: async (parent, { name }) => {
+            try {
+                const world = await World.findOne({ name }).populate([
+                    {
+                        path: 'regions',
+                        model: 'Region',
+                        populate: {
+                            path: 'countries',
+                            model: 'Country',
+                            populate: [
+                                {
+                                    path: 'cities',
+                                    model: 'City'
+                                },
+                                {
+                                    path: 'religions',
+                                    model: 'Religion',
+                                    populate: {
+                                        path: 'gods',
+                                        model: 'God'
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        path: 'religions',
+                        model: 'Religion',
+                        populate: {
+                            path: 'gods',
+                            model: 'God'
+                        }
+                    },
+                    {
+                        path: 'characters',
+                        model: 'Character',
+                        populate: {
+                            path: 'race',
+                            model: 'Race'
+                        }
+                    }
+                ])
+                console.log(world)
+                return world
+            } catch (err) {
+                console.log(err)
+                return err
+            }
+
         }
     },
     Mutation: {
@@ -128,6 +188,15 @@ const resolvers = {
                 return { token, user }
             } catch (err) {
                 console.log(err)
+            }
+        },
+        createWorld: async (parent, { world }) => {
+            try {
+                console.log(world)
+                const newWorld = await World.create(world)
+                return newWorld
+            } catch (err) {
+                return err
             }
         }
     }

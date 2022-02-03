@@ -35,3 +35,11 @@ export const UPDATE_USER = gql`
     }
 }
 `
+
+export const CREATE_WORLD = gql`
+    mutation CreateWorld($world: WorldInput) {
+        createWorld(world: $world) {
+            _id
+        }
+    }
+`
