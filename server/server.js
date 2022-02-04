@@ -21,6 +21,9 @@ const server = new ApolloServer({
 
 app.use(express.urlencoded({ extended: false }))
 app.use(express.json())
+// app.use(function (req, res, next) {
+//   res.setHeader('Cache-control', 'public, max-age=36000000')
+// })
 
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static(path.join(__dirname, '../client/build')));

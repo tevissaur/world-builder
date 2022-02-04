@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
-import Box from '@mui/material/Box'
+import Grid from '@mui/material/Grid'
 import Button from '@mui/material/Button'
 import FormControl from '@mui/material/FormControl'
 import FormLabel from '@mui/material/FormLabel'
 import TextField from '@mui/material/TextField'
 import testImg from '../../assets/205201-fantasy_art-landscape-arch.jpg'
 import store from '../../utils/store'
-import { setDrawerOpen, setWorldsAction } from "../../utils/actions";
+import { setWorldsAction } from "../../utils/actions";
 import { useMutation } from "@apollo/client";
 import { CREATE_WORLD } from "../../utils/mutations";
 import auth from "../../utils/auth";
@@ -20,10 +20,6 @@ const CreateWorld = (props) => {
     const [worldDesc, setWorldDesc] = useState('')
     const [createWorld] = useMutation(CREATE_WORLD)
 
-
-    useEffect(() => {
-        console.log(worldDesc)
-    }, [worldDesc])
     
     const handleSubmit = async () => {
         try {
@@ -51,16 +47,14 @@ const CreateWorld = (props) => {
     return (
         <>
             <TitleBanner image={testImg} title='Create Your World' />
-            <Box padding={5} margin='auto'
-                display='flex' justifyContent='center'
-            >
+            <Grid container item spacing={5} margin='20px auto' xs={10} md={9} lg={6} >
                 <FormControl variant="filled"
                     sx={{
                         justifyContent: 'center',
                         margin: 'auto', padding: '10px 5px 50px 5px',
                         borderRadius: '5px',
                         backgroundColor: 'white',
-                        width: '50%',
+                        width: '100%',
                     }}
                 >
                     <FormLabel sx={{
@@ -117,7 +111,7 @@ const CreateWorld = (props) => {
 
                 </FormControl>
 
-            </Box>
+            </Grid>
         </>
     )
 }

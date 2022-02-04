@@ -41,7 +41,6 @@ const MainLayout = () => {
 
             loading ? console.log(loading) : store.dispatch(setWorldAction(data?.me?.worlds[0]))
 
-            console.log(data)
             loading ? console.log(loading) : store.dispatch(setWorldsAction(data?.me?.worlds))
         }
     }, [data, loading, _id, error])

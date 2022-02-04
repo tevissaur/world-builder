@@ -19,6 +19,7 @@ const Title = styled(Typography)({
     fontSize: '32px',
     bottom: 0,
     left: 0,
+    minWidth: 'max-content',
     backgroundColor: '#000000be'
 }) 
 
