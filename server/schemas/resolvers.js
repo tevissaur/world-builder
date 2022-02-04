@@ -55,6 +55,14 @@ const resolvers = {
                                 path: 'gods',
                                 model: 'God'
                             }
+                        },
+                        {
+                            path: 'characters',
+                            model: 'Character',
+                            populate: {
+                                path: 'race',
+                                model: 'Race'
+                            }
                         }
                     ]
                 }
@@ -91,13 +99,20 @@ const resolvers = {
                         path: 'gods',
                         model: 'God'
                     }
+                },
+                {
+                    path: 'characters',
+                    model: 'Character',
+                    populate: {
+                        path: 'race',
+                        model: 'Race'
+                    }
                 }
             ])
         },
         userWorlds: async (parent, { creator }) => {
             try {
                 const worlds = await World.find({ creator })
-                console.log(worlds)
                 return worlds
             } catch (err) {
                 console.log(err)
@@ -105,6 +120,7 @@ const resolvers = {
             }
         },
         world: async (parent, { name }) => {
+            console.log(name)
             try {
                 const world = await World.findOne({ name }).populate([
                     {
@@ -146,7 +162,6 @@ const resolvers = {
                         }
                     }
                 ])
-                console.log(world)
                 return world
             } catch (err) {
                 console.log(err)
@@ -192,8 +207,12 @@ const resolvers = {
         },
         createWorld: async (parent, { world }) => {
             try {
-                console.log(world)
                 const newWorld = await World.create(world)
+                const updatedUser = await User.findOneAndUpdate({ _id: world.creator }, {
+                    $push: { worlds: newWorld }
+                }, {
+                    new: true
+                })
                 return newWorld
             } catch (err) {
                 return err

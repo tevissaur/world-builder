@@ -1,13 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import ProfileNavIcons from './ProfileNavIcons'
 import { styled } from '@mui/material/styles';
-import { Menu, HomeMax } from '@mui/icons-material'
-import { AppBar as MuiAppBar, Toolbar, Box, Slide, Drawer, List, Link, IconButton, ListItem, ListItemIcon, MenuItem, InputLabel, FormControl, Select, ListItemText, useScrollTrigger } from '@mui/material'
+import Menu from '@mui/icons-material/Menu'
+import { AppBar as MuiAppBar, Toolbar, Box, Slide, Link, IconButton, useScrollTrigger } from '@mui/material'
 import { Link as ReactLink } from 'react-router-dom'
-import { useQuery } from '@apollo/client';
-import { GET_ME } from '../utils/queries'
 import auth from '../utils/auth';
-import SideDrawer from './SideDrawer';
 import store from '../utils/store';
 import { setDrawerOpen } from '../utils/actions';
 
@@ -47,10 +44,22 @@ const AppBar = styled(MuiAppBar, { shouldForwardProp: (prop) => prop !== 'open',
     }),
 }));
 
+export const NavLink = styled(Link)({
+    fontSize: 18,
+    fontFamily: 'Arial',
+    textDecoration: 'none',
+    marginRight: 2,
+    color: 'white',
+    alignSelf: "center",
+    padding: '7.5px 10px',
+    borderRadius: '3px',
+    ':hover': {
+        backgroundColor: '#614330'
+    }
+})
+
 const TopNav = () => {
     const { openWorld, drawerOpen } = store.getState()
-    const state = store.getState()
-
 
     return (
         <HideOnScroll>
@@ -58,77 +67,55 @@ const TopNav = () => {
             <AppBar position="fixed" open={drawerOpen} >
                 <Toolbar>
                     <IconButton
-                        color="inherit"
                         aria-label="open drawer"
                         onClick={() => store.dispatch(setDrawerOpen(!drawerOpen))}
                         edge="start"
-                        sx={{ mr: 2 }}
+                        sx={{
+                            mr: 2,
+                            backgroundColor: 'darkgrey',
+                            padding: '5.5px 7.5px',
+                            borderRadius: '3px',
+                            ':hover': {
+                                backgroundColor: 'gray'
+                            }
+                        }}
+
                     >
                         <Menu />
                     </IconButton>
-                    <Box sx={{ display: 'flex', justifyContent: 'space-between', width: '100%' }} >
-                        <Box sx={{ display: 'flex', justifyContent: 'flex-start', width: '100%' }}>
-                            <Link component={ReactLink} to="/home"
-                                fontSize={18}
-                                fontFamily='Arial'
-                                underline="none"
-                                marginRight={2}
-                                color='white'
-                                alignSelf="center"
-                                className="nav-button"
-                                paddingX={1}
-                                paddingY={0.4}
-                                borderRadius={0.75}
-                            >
+                    <Box sx={{
+                        display: 'flex',
+                        justifyContent: 'space-between',
+                        width: '100%'
+                    }} >
+                        <Box sx={{
+                            display: 'flex',
+                            justifyContent: 'flex-start',
+                            width: '100%'
+                        }}>
+                            <NavLink component={ReactLink} to="/home">
                                 Home
-                            </Link>
-                            <Link component={ReactLink} to="/dashboard"
-                                fontSize={18}
-                                fontFamily='Arial'
-                                underline="none"
-                                marginRight={2}
-                                color='white'
-                                alignSelf="center"
-                                className="nav-button"
-                                paddingX={1}
-                                paddingY={0.4}
-                                borderRadius={0.75}
-                            >
-                                {openWorld.name}
-                            </Link>
+                            </NavLink>
+                            <NavLink component={ReactLink} to="/dashboard">
+                                {openWorld?.name}
+                            </NavLink>
 
                         </Box>
                         {auth.loggedIn() ? (
                             <ProfileNavIcons />
                         ) : (
-                            <Box sx={{ display: 'flex', justifyContent: 'flex-end', width: '100%' }}>
+                            <Box sx={{
+                                display: 'flex',
+                                justifyContent: 'flex-end',
+                                width: '100%'
+                            }}>
 
-                                <Link component={ReactLink} to='/log-in' fontSize={18}
-                                    fontFamily='Arial'
-                                    underline="none"
-                                    marginRight={2}
-                                    color='white'
-                                    alignSelf="center"
-                                    className="nav-button"
-                                    paddingX={1}
-                                    paddingY={0.4}
-                                    borderRadius={0.75}
-                                >
+                                <NavLink component={ReactLink} to='/log-in'>
                                     Log In
-                                </Link>
-                                <Link component={ReactLink} to='/sign-up' fontSize={18}
-                                    fontFamily='Arial'
-                                    underline="none"
-                                    marginRight={2}
-                                    color='white'
-                                    alignSelf="center"
-                                    className="nav-button"
-                                    paddingX={1}
-                                    paddingY={0.4}
-                                    borderRadius={0.75}
-                                >
+                                </NavLink>
+                                <NavLink component={ReactLink} to='/sign-up'>
                                     Sign Up
-                                </Link>
+                                </NavLink>
                             </Box>
                         )}
 

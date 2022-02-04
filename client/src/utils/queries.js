@@ -23,6 +23,51 @@ export const GET_WORLD = gql`
     query GetWorld($name: String!) {
       world(name: $name) {
         _id
+        name
+        regions {
+          _id
+          name
+          countries {
+            _id
+            name
+            government {
+              style
+            }
+            cities {
+              _id
+              name
+            }
+          }
+          landmarks {
+            name
+            description
+          }
+          monsters {
+            _id
+          }
+        }
+        religions {
+          _id
+          name
+          gods {
+            _id
+            name
+            description
+            domains
+            symbol
+            alignment
+          }
+        }
+        description
+        characters {
+          _id
+          name
+          description
+          backstory
+          bonds
+          goals
+          fears
+        }
       }
     }
 `
@@ -40,10 +85,20 @@ export const GET_ME = gql`
           countries {
             _id
             name
+            government {
+              style
+            }
             cities {
               _id
               name
             }
+          }
+          landmarks {
+            name
+            description
+          }
+          monsters {
+            _id
           }
         }
         religions {
@@ -53,10 +108,20 @@ export const GET_ME = gql`
             _id
             name
             description
-            alignment
             domains
             symbol
+            alignment
           }
+        }
+        description
+        characters {
+          _id
+          name
+          description
+          backstory
+          bonds
+          goals
+          fears
         }
       }
     }

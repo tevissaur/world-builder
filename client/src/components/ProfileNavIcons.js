@@ -1,8 +1,18 @@
 import * as React from 'react';
-import { Box, Avatar, Menu, MenuItem, ListItemIcon, Divider, IconButton, Typography, Tooltip, Link, Button } from '@mui/material'
-import { PersonAdd, Settings, Logout } from '@mui/icons-material'
+import Box from '@mui/material/Box'
+import Avatar from '@mui/material/Avatar'
+import Menu from '@mui/material/Menu'
+import MenuItem from '@mui/material/MenuItem'
+import ListItemIcon from '@mui/material/ListItemIcon'
+import Divider from '@mui/material/Divider'
+import IconButton from '@mui/material/IconButton'
+import Tooltip from '@mui/material/Tooltip'
+import PersonAdd from '@mui/icons-material/PersonAdd'
+import Settings from '@mui/icons-material/Settings'
+import Logout from '@mui/icons-material/Logout'
 import auth from '../utils/auth';
 import { Link as ReactLink } from 'react-router-dom';
+import { NavLink } from './TopNav';
 
 export default function AccountMenu() {
     const [anchorEl, setAnchorEl] = React.useState(null);
@@ -14,22 +24,11 @@ export default function AccountMenu() {
         setAnchorEl(null);
     };
     return (
-        <React.Fragment>
+        <>
             <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center' }}>
-                <Link component={ReactLink} to="/dashboard"
-                    fontSize={18}
-                    fontFamily='Arial'
-                    underline="none"
-                    marginRight={2}
-                    color='white'
-                    alignSelf="center"
-                    className="nav-button"
-                    paddingX={1}
-                    paddingY={0.4}
-                    borderRadius={0.75}
-                >
+                <NavLink component={ReactLink} to="/dashboard">
                     Profile
-                </Link>
+                </NavLink>
                 <Tooltip title="Account settings">
                     <IconButton
                         onClick={handleClick}
@@ -105,6 +104,6 @@ export default function AccountMenu() {
                     Logout
                 </MenuItem>
             </Menu>
-        </React.Fragment>
+        </>
     );
 }

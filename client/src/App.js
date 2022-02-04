@@ -1,16 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
 import './sass/style.css';
-import MainLayout from './pages/MainLayout';
-import DashboardLayout from "./pages/DashboardLayout"
-import WikiPageLayout from "./pages/WikiPageLayout";
-import LandingPage from './pages/LandingPage'
-import SignInSide from "./pages/SignIn";
-import SignUp from "./pages/SignUp";
+import { MainLayout, DashboardLayout, WikiPageLayout, LandingPage, SignInSide, SignUp } from './pages'
 import { CharacterMain, CreateWorld, Main, PantheonTable } from './components/dashboard'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { useDispatch, useSelector } from "react-redux";
-
 
 const client = new ApolloClient({
   uri: '/graphql',
@@ -22,8 +16,9 @@ const client = new ApolloClient({
 
 function App() {
 
-  const dispatch = useDispatch()
-  const state = useSelector((state) => state)
+
+  useDispatch()
+  useSelector((state) => state)
 
 
   return (
@@ -34,7 +29,7 @@ function App() {
         <Routes>
           <Route path="/*" element={<MainLayout />}>
             <Route index element={<LandingPage />} />
-            <Route path="home" element={<LandingPage />}/>
+            <Route path="home" element={<LandingPage />} />
             <Route path="log-in" element={<SignInSide />} />
             <Route path="sign-up" element={<SignUp />} />
             <Route path="wiki/*">

@@ -1,13 +1,16 @@
 import React, { useEffect, useState } from "react";
-// import { useDispa } from 'redux'
-import { Box, Button, Container, FormControl, FormLabel, Grid, TextField, Typography } from '@mui/material'
-import bannerImg from '../../assets/banner.jpg'
+import Box from '@mui/material/Box'
+import Button from '@mui/material/Button'
+import FormControl from '@mui/material/FormControl'
+import FormLabel from '@mui/material/FormLabel'
+import TextField from '@mui/material/TextField'
 import testImg from '../../assets/205201-fantasy_art-landscape-arch.jpg'
 import store from '../../utils/store'
-import { setDrawerOpen } from "../../utils/actions";
+import { setDrawerOpen, setWorldsAction } from "../../utils/actions";
 import { useMutation } from "@apollo/client";
 import { CREATE_WORLD } from "../../utils/mutations";
 import auth from "../../utils/auth";
+import TitleBanner from '../TitleBanner'
 
 
 const CreateWorld = (props) => {
@@ -19,16 +22,12 @@ const CreateWorld = (props) => {
 
 
     useEffect(() => {
-        store.dispatch(setDrawerOpen(false))
-    }, [])
-    
-    useEffect(() => {
         console.log(worldDesc)
     }, [worldDesc])
     
     const handleSubmit = async () => {
         try {
-            const newWorld = await createWorld({
+            const { data: { createWorld: newWorld } } = await createWorld({
                 variables: {
                     world: {
                         name: worldName,
@@ -40,6 +39,8 @@ const CreateWorld = (props) => {
             if (newWorld) {
                 setWorldDesc('')
                 setWorldName('')
+                
+                store.dispatch(setWorldsAction([...state.worlds, newWorld]))
             }
 
         } catch (err) {
@@ -49,28 +50,7 @@ const CreateWorld = (props) => {
 
     return (
         <>
-            <Box
-                display='flex' justifyContent='center'
-                position='relative'
-                sx={{
-                    height: '150px',
-                    backgroundImage: `url(${testImg})`,
-                    backgroundSize: 'cover',
-                    backgroundPosition: 'center'
-                }}
-            >
-                <Typography
-                    variant="h3"
-                    color='white'
-                    paddingX={2} paddingY={1}
-                    position='absolute' bottom={0} left={0}
-                    sx={{
-                        backgroundColor: '#000000be'
-                    }}
-                >
-                    Create Your World
-                </Typography>
-            </Box>
+            <TitleBanner image={testImg} title='Create Your World' />
             <Box padding={5} margin='auto'
                 display='flex' justifyContent='center'
             >

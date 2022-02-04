@@ -1,6 +1,8 @@
-import { Typography, Link, Box } from '@mui/material';
+import Typography from '@mui/material/Typography'
+import Link from '@mui/material/Link'
+import Box from '@mui/material/Box'
 import React from 'react';
-import { Route, Routes, Link as ReactLink } from 'react-router-dom'
+import { Link as ReactLink } from 'react-router-dom'
 import store from '../../utils/store'
 
 export default function Nav(props) {

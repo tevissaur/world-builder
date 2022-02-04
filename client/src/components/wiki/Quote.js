@@ -1,6 +1,5 @@
-import React, { useState } from 'react'
-import { useQuery } from '@apollo/client'
-// import { QUERY_CHARACTERS } from '../utils/queries'
+import React from 'react'
+
 
 export default function Quote(props) {
 

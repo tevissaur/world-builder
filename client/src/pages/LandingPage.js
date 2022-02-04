@@ -1,5 +1,4 @@
-import React, { useEffect } from "react"
-import auth from "../utils/auth";
+import React from "react"
 
 
 const LandingPage = (props) => {

@@ -20,7 +20,7 @@ export const setCharacters = (payload) => {
 }
 
 export const setDrawerOpen = (payload) => {
-
+    console.log(payload)
     return {
         type: 'SET_OPEN',
         payload

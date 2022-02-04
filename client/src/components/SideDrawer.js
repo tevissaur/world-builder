@@ -1,45 +1,81 @@
 import React from "react"
-import { AppBar as MuiAppBar, Toolbar, Box, Slide, Drawer, List, Link, IconButton, ListItem, ListItemIcon, MenuItem, InputLabel, FormControl, Select, ListItemText, NativeSelect, useScrollTrigger } from '@mui/material'
+import Box from '@mui/material/Box'
+import Drawer from '@mui/material/Drawer'
+import List from '@mui/material/List'
+import Link from '@mui/material/Link'
+import ListItem from '@mui/material/ListItem'
+import ListItemIcon from '@mui/material/ListItemIcon'
+import MenuItem from '@mui/material/MenuItem'
+import InputLabel from '@mui/material/InputLabel'
+import FormControl from '@mui/material/FormControl'
+import Select from '@mui/material/Select'
+import ListItemText from '@mui/material/ListItemText'
 import { Link as ReactLink } from 'react-router-dom'
-import ProfileNavIcons from './ProfileNavIcons'
 import auth from '../utils/auth'
-import { styled } from '@mui/material/styles';
-import { Menu, HomeMax } from '@mui/icons-material'
+import DrawerHeader from "./DrawerHeader"
+import HomeMax from '@mui/icons-material/HomeMax'
 import store from "../utils/store"
-import { GET_WORLD } from "../utils/queries"
-import { useLazyQuery } from "@apollo/client"
+import { setWorldAction } from "../utils/actions"
+import InputBase from '@mui/material/InputBase';
+import styled from '@mui/material/styles/styled'
 
 
 const drawerWidth = 240;
 
-const DrawerHeader = styled('div')(({ theme }) => ({
-    display: 'flex',
-    alignItems: 'center',
-    padding: theme.spacing(0, 1),
-    // necessary for content to be below app bar
-    ...theme.mixins.toolbar,
-    justifyContent: 'flex-end',
+
+const BootstrapInput = styled(InputBase)(({ theme }) => ({
+    backgroundColor: theme.palette.background.paper,
+    borderRadius: 3,
+    'label + &': {
+        marginTop: theme.spacing(3),
+    },
+    '& .MuiInputBase-input': {
+        borderRadius: 3,
+        position: 'relative',
+        backgroundColor: theme.palette.background.paper,
+        border: '1px solid #ced4da',
+        fontSize: 20,
+        textAlign: 'center',
+        padding: '5px 26px 5px 6px',
+        transition: theme.transitions.create(['border-color', 'box-shadow']),
+        // Use the system font instead of the default Roboto font.
+        fontFamily: [
+            '-apple-system',
+            'BlinkMacSystemFont',
+            '"Segoe UI"',
+            'Roboto',
+            '"Helvetica Neue"',
+            'Arial',
+            'sans-serif',
+            '"Apple Color Emoji"',
+            '"Segoe UI Emoji"',
+            '"Segoe UI Symbol"',
+        ].join(','),
+        '&:focus': {
+            borderRadius: 4,
+            borderColor: '#80bdff',
+            boxShadow: '0 0 0 0.2rem rgba(0,123,255,.25)',
+        },
+    },
 }));
 
+const SideNavListItem = styled(ListItem)({
+    ':hover': {
+        backgroundColor: 'black'
+    }
+})
 
 const SideDrawer = () => {
-    const { drawerOpen, openWorld, worlds } = store.getState()
+    const { drawerOpen, worlds } = store.getState()
 
-    const [getWorld, { data: singleWorldData, loading: singleWorldLoading }] = useLazyQuery(GET_WORLD)
 
-    const handleWorldChange = async (name) => {
+    const handleWorldChange = async (id) => {
+        console.log(id)
         try {
-
-            const { data: world} = await getWorld({
-                variables: {
-                    name
-                }
-            })
-            console.log(world)
+            store.dispatch(setWorldAction(worlds[id]))
         } catch (err) {
             console.log(err)
         }
-
     }
 
 
@@ -59,89 +95,106 @@ const SideDrawer = () => {
             anchor="left"
             open={drawerOpen}
         >
-            <DrawerHeader>
-
-            </DrawerHeader>
+            <DrawerHeader />
             {auth.loggedIn() ? (
                 <>
+                    <FormControl fullWidth variant="standard">
+                        <InputLabel
+                            htmlFor="world-select"
+                            sx={{ marginLeft: '5px', color: 'white', fontSize: '20px' }}>
+                            Open World
+                        </InputLabel>
+                        <Select
+                            id='world-select'
+                            label="Open World"
+                            defaultValue={0}
+                            onChange={(e) => handleWorldChange(e.target.value)}
+                            input={<BootstrapInput />}
+                            MenuProps={{
+                                PaperProps: {
+                                    sx: {
+                                        left: '1px!important'
+                                    },
+                                },
+                            }}
+                        >
+                            {worlds?.map((world, itx) => (
+                                <MenuItem
+                                    id={itx}
+                                    value={itx}
+                                    key={world._id}
+                                >
+                                    {world.name}
+                                </MenuItem>
+                            ))}
+                        </Select>
+                    </FormControl>
                     <List>
-                        <FormControl fullWidth>
-
-                            <NativeSelect
-                                defaultValue={openWorld}
-                                onChange={(e) => handleWorldChange(e.target.value)}
-                            >
-                                {worlds?.map((world) => (
-                                    <option color="white" id={world._id} value={world.name} key={world._id}>{world.name}</option>
-                                ))}
-                            </NativeSelect>
-                        </FormControl>
                         <Link component={ReactLink} to='/dashboard/create-new-world' underline='none' color='white' >
-                            <ListItem button sx={{ borderBottom: '1px solid #EAEDD4' }}>
+                            <SideNavListItem button sx={{ borderBottom: '1px solid #EAEDD4' }}>
                                 <ListItemIcon sx={{ color: 'white' }}>
                                     <HomeMax />
                                 </ListItemIcon>
 
                                 <ListItemText primary="Create New World" />
-                            </ListItem>
+                            </SideNavListItem>
                         </Link>
                         <Link component={ReactLink} to='/dashboard' underline='none' color='white' >
-                            <ListItem button>
+                            <SideNavListItem button>
                                 <ListItemIcon sx={{ color: 'white' }}>
                                     <HomeMax />
                                 </ListItemIcon>
 
                                 <ListItemText primary="Dashboard" />
-                            </ListItem>
+                            </SideNavListItem>
                         </Link>
                         <Link component={ReactLink} to='/wiki/home' underline='none' color='white' >
-                            <ListItem button sx={{ borderBottom: '1px solid #EAEDD4' }}>
+                            <SideNavListItem button sx={{ borderBottom: '1px solid #EAEDD4' }}>
                                 <ListItemIcon sx={{ color: 'white' }}>
                                     <HomeMax />
                                 </ListItemIcon>
 
                                 <ListItemText primary="World Wiki" />
-                            </ListItem>
+                            </SideNavListItem>
                         </Link>
 
-                    </List>
-                    <List>
+
 
                         <Link component={ReactLink} to='dashboard/pantheon' underline='none' color='white' >
-                            <ListItem button>
+                            <SideNavListItem button>
                                 <ListItemIcon sx={{ color: 'white' }}>
                                     <HomeMax />
                                 </ListItemIcon>
 
                                 <ListItemText primary="Pantheon of Deities" />
-                            </ListItem>
+                            </SideNavListItem>
                         </Link>
                         <Link component={ReactLink} to='dashboard/characters' underline='none' color='white' >
-                            <ListItem button>
+                            <SideNavListItem button>
                                 <ListItemIcon sx={{ color: 'white' }}>
                                     <HomeMax />
                                 </ListItemIcon>
 
                                 <ListItemText primary="Characters" />
-                            </ListItem>
+                            </SideNavListItem>
                         </Link>
                         <Link component={ReactLink} to='dashboard/regions' underline='none' color='white' >
-                            <ListItem button>
+                            <SideNavListItem button>
                                 <ListItemIcon sx={{ color: 'white' }}>
                                     <HomeMax />
                                 </ListItemIcon>
 
                                 <ListItemText primary="Regions" />
-                            </ListItem>
+                            </SideNavListItem>
                         </Link>
                         <Link component={ReactLink} to='dashboard/bestiary' underline='none' color='white' >
-                            <ListItem button>
+                            <SideNavListItem button>
                                 <ListItemIcon sx={{ color: 'white' }}>
                                     <HomeMax />
                                 </ListItemIcon>
 
                                 <ListItemText primary="Bestiary" />
-                            </ListItem>
+                            </SideNavListItem>
                         </Link>
                     </List>
                 </>
