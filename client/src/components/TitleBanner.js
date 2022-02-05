@@ -4,7 +4,7 @@ import Typography from '@mui/material/Typography'
 import styled from '@mui/material/styles/styled'
 
 
-const ImageBanner = styled(Box, { shouldForwardProp: (prop) => prop !== 'image' })(({ image }) => ({
+const ImageBanner = styled(Box, { shouldForwardProp: (prop) => prop !== 'image' })(({ image, theme }) => ({
     height: '200px',
     backgroundImage: `url(${image})`,
     backgroundSize: 'cover',
@@ -12,7 +12,7 @@ const ImageBanner = styled(Box, { shouldForwardProp: (prop) => prop !== 'image' 
     position: 'relative',
 }))
 
-const Title = styled(Typography)({
+const Title = styled(Typography)(({ theme }) => ({
     color: 'white',
     padding: '10px 15px',
     position: 'absolute',
@@ -20,8 +20,11 @@ const Title = styled(Typography)({
     bottom: 0,
     left: 0,
     minWidth: 'max-content',
-    backgroundColor: '#000000be'
-}) 
+    backgroundColor: '#000000be',
+    [theme.breakpoints.up('md')]: {
+        color: 'red'
+    }
+}) )
 
 const TitleBanner = ({ image, title }) => {
 

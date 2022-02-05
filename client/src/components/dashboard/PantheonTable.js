@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography, Paper } from "@mui/material";
+import { Box, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography, Paper, Grid } from "@mui/material";
 // import Delete from '@mui/icons-material/Delete'
 // import DeleteForeverTwoTone from '@mui/icons-material/DeleteForeverTwoTone'
 // import FilterList from '@mui/icons-material/FilterList'
@@ -16,19 +16,18 @@ const PantheonTable = () => {
     return (
         <>
             <TitleBanner image={testImg} title={`Pantheons of ${state.openWorld.name}`} />
-            <Box display='flex' justifyContent='center' flexWrap='nowrap' maxWidth='100%'>
+            <Grid container justifyContent='center' spacing={3}>
                 {/* <Card display='flex' justifyContent='flex-start' flexWrap='wrap' flexDirection='col' >
                 
             </Card> */}
-                <Box display='flex' justifyContent='center' flexWrap='wrap' flexDirection='col' >
+                <Grid item xs={12} sm={11} md={10} lg={8}>
                     {state.openWorld.religions?.map((religion) => (
 
                         <TableContainer
                             component={Paper}
                             key={religion._id}
                             sx={{
-                                margin: 5,
-                                maxWidth: '70%'
+                                margin: '20px auto',
                             }}
                         >
                             <Table
@@ -97,12 +96,12 @@ const PantheonTable = () => {
                         </TableContainer>
                     ))}
 
-                </Box>
+                </Grid>
                 {/* <Card display='flex' justifyContent='flex-end' flexWrap='wrap' flexDirection='col' >
                
             </Card> */}
 
-            </Box>
+            </Grid>
 
         </>
     );
