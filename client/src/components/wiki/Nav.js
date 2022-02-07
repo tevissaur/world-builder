@@ -6,7 +6,7 @@ import { Link as ReactLink } from 'react-router-dom'
 import store from '../../utils/store'
 
 export default function Nav(props) {
-  const state = store.getState()
+  const { world: { openWorld } } = store.getState()
 
 
 
@@ -16,7 +16,7 @@ export default function Nav(props) {
 
         <img className="logo" src="/assets/border.png" alt="This is alt text" />
         <Typography variant='h4' className='world-name'>
-          {state.openWorld.name}
+          {openWorld.name}
         </Typography>
 
 

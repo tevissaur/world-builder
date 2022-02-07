@@ -19,7 +19,7 @@ import { setWorldAction, setWorldsAction } from "../utils/actions";
 
 const MainLayout = () => {
     const { data: { _id } } = auth.getProfile()
-    const { drawerOpen } = store.getState()
+    const { ui: { drawerOpen } } = store.getState()
     const state = store.getState()
     const { data, loading, error } = useQuery(GET_ME, {
         variables: {

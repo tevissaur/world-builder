@@ -1,5 +1,5 @@
 import React from 'react';
-import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
+import { ApolloClient, InMemoryCache, ApolloProvider, ApolloLink, link } from '@apollo/client';
 import './sass/style.css';
 import { MainLayout, DashboardLayout, WikiPageLayout, LandingPage, SignInSide, SignUp } from './pages'
 import { CharacterMain, CreateWorld, Main, PantheonTable } from './components/dashboard'

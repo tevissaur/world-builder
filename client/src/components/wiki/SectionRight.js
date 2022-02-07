@@ -1,8 +1,15 @@
 import React from "react";
+import Box from "@mui/material/Box";
+import styled from '@mui/material/styles/styled'
+
+
 
 export default function SectionRight(props) {
+
+
+
     return (
-        <div className="main-page-right">
+        <Box component='section' className="main-page-right">
             <article className="article-container">
                 <h1 className="article-title">
                     Welcome to the DMs Guide to Forene!
@@ -12,6 +19,6 @@ export default function SectionRight(props) {
                     to start in, sites to go see, and fantastical creatures to meet.
                 </p>
             </article>
-        </div>
+        </Box>
     )
 }

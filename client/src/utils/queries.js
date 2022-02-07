@@ -1,13 +1,5 @@
 import { gql } from '@apollo/client'
 
-export const ALL_CHARACTERS = gql`
-    query AllCharacters {
-        characters {
-            _id
-            name
-        }
-    }
-`
 
 export const GET_USER_WORLDS = gql`
     query GetUserWorlds($creator: ID!) {

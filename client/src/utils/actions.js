@@ -1,20 +1,20 @@
 export const setWorldAction = (payload) => {
     return {
-        type: 'SET_OPEN_WORLD',
+        type: 'world/openWorld',
         payload
     }
 }
 
 export const setWorldsAction = (payload) => {
     return {
-        type: 'SET_WORLDS',
+        type: 'world/allUserWorlds',
         payload
     }
 }
 
 export const setCharacters = (payload) => {
     return {
-        type: 'SET_CHARACTERS',
+        type: 'world/characters',
         payload
     }
 }
@@ -22,7 +22,7 @@ export const setCharacters = (payload) => {
 export const setDrawerOpen = (payload) => {
     console.log(payload)
     return {
-        type: 'SET_OPEN',
+        type: 'ui/drawer',
         payload
     }
 }

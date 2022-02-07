@@ -31,7 +31,7 @@ const ExpandMore = styled((props) => {
 
 
 const CharacterMain = (props) => {
-    const state = store.getState()
+    const { world: { openWorld } } = store.getState()
     const [expanded, setExpanded] = useState(false)
 
     const handleExpandClick = () => {
@@ -40,7 +40,7 @@ const CharacterMain = (props) => {
 
     return (
         <>
-            <TitleBanner image={testImg} title={`Characters of ${state.openWorld.name}`} />
+            <TitleBanner image={testImg} title={`Characters of ${openWorld.name}`} />
             <Grid container spacing={2}>
                 <Grid item xs={12} sm={12} md={12} lg={3}>
 
@@ -66,7 +66,7 @@ const CharacterMain = (props) => {
                     </Card>
                 </Grid>
                 <Grid item container xs={12} md={12} lg={9}>
-                    {state.openWorld.characters?.map((character) => (
+                    {openWorld.characters?.map((character) => (
                         <Grid item xs={4} key={character.name}>
 
                             <Card sx={{ minWidth: '30%', margin: 1 }}>

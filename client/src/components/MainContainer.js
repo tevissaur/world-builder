@@ -4,7 +4,9 @@ import styled from '@mui/material/styles/styled';
 const drawerWidth = 240;
 
 
-const MainContainer = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(({ theme, open }) => ({
+const MainContainer = styled('main', { 
+    shouldForwardProp: (prop) => prop !== 'open'
+ })(({ theme, open }) => ({
     flexGrow: 1,
     padding: theme.spacing(0),
     marginTop: '64px',

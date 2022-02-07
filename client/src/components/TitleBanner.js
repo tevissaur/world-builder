@@ -21,9 +21,6 @@ const Title = styled(Typography)(({ theme }) => ({
     left: 0,
     minWidth: 'max-content',
     backgroundColor: '#000000be',
-    [theme.breakpoints.up('md')]: {
-        color: 'red'
-    }
 }) )
 
 const TitleBanner = ({ image, title }) => {

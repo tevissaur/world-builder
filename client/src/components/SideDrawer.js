@@ -66,7 +66,7 @@ const SideNavListItem = styled(ListItem)({
 })
 
 const SideDrawer = () => {
-    const { drawerOpen, worlds } = store.getState()
+    const { ui: { drawerOpen }, world: { worlds } } = store.getState()
 
 
     const handleWorldChange = async (id) => {

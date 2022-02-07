@@ -10,18 +10,18 @@ import TitleBanner from "../TitleBanner";
 
 
 const PantheonTable = () => {
-    const state = store.getState()
+    const { world: { openWorld } } = store.getState()
 
 
     return (
         <>
-            <TitleBanner image={testImg} title={`Pantheons of ${state.openWorld.name}`} />
+            <TitleBanner image={testImg} title={`Pantheons of ${openWorld.name}`} />
             <Grid container justifyContent='center' spacing={3}>
                 {/* <Card display='flex' justifyContent='flex-start' flexWrap='wrap' flexDirection='col' >
                 
             </Card> */}
                 <Grid item xs={12} sm={11} md={10} lg={8}>
-                    {state.openWorld.religions?.map((religion) => (
+                    {openWorld.religions?.map((religion) => (
 
                         <TableContainer
                             component={Paper}

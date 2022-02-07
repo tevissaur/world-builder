@@ -1,31 +1,25 @@
-:root {
-  --chocolate-traditional: #7A4002ff;
-  --harvest-gold: #CF8C04ff;
-  --english-lavender: #A68189ff;
-}
-body {
-  margin: 0px;
-}
 html {
   scroll-behavior: smooth;
-  background: var(--harvest-gold);
-  background-position: top center;
-  background-size: cover;
-  background-repeat: no-repeat;
+  background-color: #7a2020;
 }
-.nav-button:hover {
-  background-color: #614330;
-} 
+
+body {
+  margin: 0;
+}
+
 .wiki-site-wrapper {
   display: -ms-grid;
   display: grid;
-  grid-template-areas: "nav nav nav nav nav nav nav nav""pt pt pt pt pt pt pt pt""quote quote quote quote quote quote right right""left left left left left left right right""f f f f f f f f";
+      grid-template-areas: "nav nav nav nav nav nav nav nav" "pt pt pt pt pt pt pt pt" "quote quote quote quote quote quote right right" "left left left left left left right right" "f f f f f f f f";
   grid-gap: 0;
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 8;
+  grid-row: 1 / 9;
   margin: 5% auto;
   height: 90%;
-  width: 85%;
+  width: 80%;
   -webkit-box-shadow: 0 0 10px #111111ad;
-  box-shadow: 0 0 10px #111111ad;
+          box-shadow: 0 0 10px #111111ad;
   background-color: rgba(255, 235, 212, 0.85);
 }
 
@@ -39,10 +33,10 @@ html {
   grid-column: 1 / 9;
   display: -ms-grid;
   display: grid;
-  grid-template-areas: "logo logo title title title title title title""logo logo nav-links nav-links nav-links nav-links nav-links nav-links";
+      grid-template-areas: "logo logo title title title title title title" "logo logo nav-links nav-links nav-links nav-links nav-links nav-links";
   -webkit-box-pack: left;
-  -ms-flex-pack: left;
-  justify-content: left;
+      -ms-flex-pack: left;
+          justify-content: left;
   font-weight: bold;
   height: -webkit-min-content;
   height: -moz-min-content;
@@ -88,7 +82,7 @@ html {
   margin: 0 0 0 2rem;
   padding-top: 2%;
   text-decoration: none;
-  font-family: "Ariel", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif!important;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif !important;
   color: black;
 }
 
@@ -163,16 +157,15 @@ html {
   text-align: center;
   width: 100%;
   -webkit-box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+          box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
 }
 
 .wiki-site-wrapper nav .dropdown:hover .dropdown-content {
   display: block;
 }
 
-
 .wiki-site-wrapper .page-title-container {
-  -ms-grid-row: 3 / 4;
+  -ms-grid-row: 2;
   -ms-grid-column: 1;
   -ms-grid-column-span: 8;
   grid-area: pt;
@@ -196,30 +189,18 @@ html {
 }
 
 .wiki-site-wrapper #quote-container {
-  -ms-grid-row: 2;
+  -ms-grid-row: 3;
   -ms-grid-column: 1;
-  -ms-grid-column-span: 8;
+  -ms-grid-column-span: 6;
   grid-area: quote;
   -ms-grid-column: 1;
-  -ms-grid-column-span: 8;
-  grid-column: 1 / 7;
-}
-
-.wiki-site-wrapper .main-page-left {
-  -ms-grid-row: 3;
-  -ms-grid-column: 1;
-  -ms-grid-column-span: 6;
-  grid-area: left;
-  -ms-grid-column: 1;
   -ms-grid-column-span: 6;
   grid-column: 1 / 7;
   -ms-grid-row: 3;
-  grid-row: 4;
-  padding-left: 15px;
-  text-align: left;
+  grid-row: 3;
 }
 
-.wiki-site-wrapper .quote {
+.wiki-site-wrapper #quote-container .quote {
   font-size: large;
   font-style: oblique;
   text-align: center;
@@ -229,10 +210,24 @@ html {
   margin-top: 10px;
 }
 
-.wiki-site-wrapper .author {
+.wiki-site-wrapper #quote-container .author {
   font-style: italic;
   margin: 5px;
   text-align: center;
+}
+
+.wiki-site-wrapper .main-page-left {
+  -ms-grid-row: 4;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 6;
+  grid-area: left;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 6;
+  grid-column: 1 / 7;
+  -ms-grid-row: 4;
+  grid-row: 4;
+  padding-left: 15px;
+  text-align: left;
 }
 
 .wiki-site-wrapper .main-page-left .article-title {
@@ -316,6 +311,7 @@ html {
 
 .wiki-site-wrapper .main-page-right {
   -ms-grid-row: 3;
+  -ms-grid-row-span: 2;
   -ms-grid-column: 7;
   -ms-grid-column-span: 2;
   grid-area: right;
@@ -324,9 +320,10 @@ html {
   -ms-grid-column-span: 2;
   grid-column: 7 / 9;
   -ms-grid-row: 3;
-  grid-row-start: 3;
+  -ms-grid-row-span: 3;
+  grid-row: 3 / 6;
   -webkit-transform: translate(0, -2px);
-  transform: translate(0, -2px);
+          transform: translate(0, -2px);
 }
 
 .wiki-site-wrapper .main-page-right .article-container {
@@ -359,16 +356,18 @@ html {
 .wiki-site-wrapper footer {
   display: -ms-grid;
   display: grid;
-  -ms-grid-row: 4;
+  -ms-grid-row: 5;
   -ms-grid-column: 1;
   -ms-grid-column-span: 8;
   grid-area: f;
-  -ms-grid-columns: bl bl bm bm bm br br br;
-  grid-template-columns: bl bl bm bm bm br br br;
+  -ms-grid-row: 5;
+  -ms-grid-row-span: 1;
+  grid-row: 5 / 6;
+      grid-template-areas: "bl bl bm bm bm br br br";
   padding: 10px;
 }
 
-.wiki-site-wrapper footer>section {
+.wiki-site-wrapper footer > section {
   border: 4px ridge #a52a2a;
   margin: 0 5px;
 }
@@ -411,6 +410,9 @@ html {
 }
 
 .wiki-site-wrapper footer .bottom-l {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 2;
   grid-area: bl;
   -ms-grid-column: 1;
   -ms-grid-column-span: 1;
@@ -425,6 +427,9 @@ html {
 }
 
 .wiki-site-wrapper footer .bottom-m {
+  -ms-grid-row: 1;
+  -ms-grid-column: 3;
+  -ms-grid-column-span: 3;
   grid-area: bm;
   -ms-grid-column: 2;
   -ms-grid-column-span: 2;
@@ -448,7 +453,7 @@ html {
   border: none;
   border-radius: 10px;
   -webkit-box-shadow: 0 9px #999;
-  box-shadow: 0 9px #999;
+          box-shadow: 0 9px #999;
 }
 
 .wiki-site-wrapper footer .bottom-m .download-button:hover {
@@ -458,9 +463,9 @@ html {
 .wiki-site-wrapper footer .bottom-m .download-button:active {
   background-color: #a52a2a;
   -webkit-box-shadow: 0 5px #666;
-  box-shadow: 0 5px #666;
+          box-shadow: 0 5px #666;
   -webkit-transform: translateY(4px);
-  transform: translateY(4px);
+          transform: translateY(4px);
 }
 
 .wiki-site-wrapper footer .bottom-m h2 {
@@ -470,6 +475,9 @@ html {
 .wiki-site-wrapper footer .bottom-r {
   display: -ms-grid;
   display: grid;
+  -ms-grid-row: 1;
+  -ms-grid-column: 6;
+  -ms-grid-column-span: 3;
   grid-area: br;
   -ms-grid-column: 5;
   -ms-grid-column-span: 4;
@@ -490,4 +498,16 @@ html {
   color: #7a2020;
 }
 
-/*# sourceMappingURL=main.css.map */
+@media (max-width: 1440px) {
+  .wiki-site-wrapper {
+    width: 100%;
+    margin: 0;
+  }
+}
+
+@media (max-width: 1024px) {
+  .wiki-site-wrapper .main-page-right {
+    display: none;
+  }
+}
+/*# sourceMappingURL=style.css.map */

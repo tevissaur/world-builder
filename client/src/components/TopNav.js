@@ -63,7 +63,7 @@ export const NavLink = styled(Link)({
 })
 
 const TopNav = () => {
-    const { openWorld, drawerOpen } = store.getState()
+    const { world: { openWorld }, ui: { drawerOpen } } = store.getState()
 
     return (
         <HideOnScroll>

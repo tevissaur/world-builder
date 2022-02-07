@@ -3,7 +3,7 @@ import { createStore } from 'redux';
 
 // Importing the reducer file that is mostly unchanged
 // import counterReducer from './counterSlice';
-import { reducer } from './reducers'
+import reducer from './reducers'
 
 const store = createStore(reducer)
 

@@ -78,7 +78,7 @@ html {
   margin: 0 0 0 2rem;
   padding-top: 2%;
   text-decoration: none;
-  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif !important;
   color: black;
 }
 
