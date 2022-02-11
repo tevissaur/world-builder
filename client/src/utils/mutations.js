@@ -88,3 +88,163 @@ export const CREATE_WORLD = gql`
         }
     }
 `
+
+export const CREATE_CHARACTER = gql`
+    mutation CreateCharacter($character: CharacterInput, $worldId: ID) {
+        createCharacter(character: $character, worldId: $worldId) {
+            _id
+            name
+            regions {
+                _id
+                name
+                countries {
+                    _id
+                    name
+                    government {
+                    style
+                    }
+                    cities {
+                    _id
+                    name
+                    }
+                }
+                landmarks {
+                    name
+                    description
+                }
+                monsters {
+                    _id
+                }
+            }
+            religions {
+                _id
+                name
+                gods {
+                    _id
+                    name
+                    description
+                    domains
+                    symbol
+                    alignment
+                }
+            }
+            description
+            characters {
+                _id
+                name
+                description
+                backstory
+                bonds
+                goals
+                fears
+            }
+        }
+    }
+`
+
+export const CREATE_RELIGION = gql`
+    mutation CreateReligion($religion: ReligionInput, $worldId: ID){
+        createReligion(religion: $religion, worldId: $worldId) {
+            _id
+            name
+            regions {
+                _id
+                name
+                countries {
+                    _id
+                    name
+                    government {
+                    style
+                    }
+                    cities {
+                    _id
+                    name
+                    }
+                }
+                landmarks {
+                    name
+                    description
+                }
+                monsters {
+                    _id
+                }
+            }
+            religions {
+                _id
+                name
+                gods {
+                    _id
+                    name
+                    description
+                    domains
+                    symbol
+                    alignment
+                }
+            }
+            description
+            characters {
+                _id
+                name
+                description
+                backstory
+                bonds
+                goals
+                fears
+            }
+        }
+    }
+
+`
+
+export const CREATE_GOD = gql`
+    mutation CreateGod($god: GodInput, $worldId: ID, $religionId: ID) {
+        createGod(god: $god, worldId: $worldId, religionId: $religionId) {
+            _id
+            name
+            regions {
+                _id
+                name
+                countries {
+                    _id
+                    name
+                    government {
+                    style
+                    }
+                    cities {
+                    _id
+                    name
+                    }
+                }
+                landmarks {
+                    name
+                    description
+                }
+                monsters {
+                    _id
+                }
+            }
+            religions {
+                _id
+                name
+                gods {
+                    _id
+                    name
+                    description
+                    domains
+                    symbol
+                    alignment
+                }
+            }
+            description
+            characters {
+                _id
+                name
+                description
+                backstory
+                bonds
+                goals
+                fears
+            }
+        }
+    }
+`

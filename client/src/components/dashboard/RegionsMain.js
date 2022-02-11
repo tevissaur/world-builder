@@ -30,7 +30,7 @@ const ExpandMore = styled((props) => {
 
 
 
-const CharacterMain = (props) => {
+const RegionsMain = (props) => {
     const { world: { openWorld } } = store.getState()
     const [expanded, setExpanded] = useState(false)
 
@@ -40,7 +40,7 @@ const CharacterMain = (props) => {
 
     return (
         <>
-            <TitleBanner image={testImg} title={`Characters of ${openWorld.name}`} />
+            <TitleBanner image={testImg} title={`Regions of ${openWorld.name}`} />
             <Grid container spacing={2} justifyContent='space-between'>
                 <Grid item xs={12} sm={12} md={12} lg={3}>
 
@@ -52,13 +52,13 @@ const CharacterMain = (props) => {
                             alt="green iguana"
                             src={placeholderImage}
                         />
-                        <Link component={ReactLink} to='/dashboard/create-new-character' underline="none">
+                        <Link component={ReactLink} to='/dashboard/create-new-region' underline="none">
 
                             <CardContent sx={{
                                 backgroundColor: 'gray'
                             }}>
                                 <Typography gutterBottom variant="h5" textAlign='center'>
-                                    Create New Character
+                                    Create New Region
                                 </Typography>
 
                             </CardContent>
@@ -66,11 +66,11 @@ const CharacterMain = (props) => {
                     </Card>
                 </Grid>
                 <Grid container item xs={12} sm={12} md={12} lg={9} columnSpacing={5}>
-                    {openWorld.characters?.map((character) => (
-                        <Grid item xs={12} sm={12} md={6} key={character.name}>
+                    {openWorld.regions?.map((region) => (
+                        <Grid item xs={12} sm={12} md={6} key={region.name}>
 
                             <Card sx={{ minWidth: '30%', margin: 2 }}>
-                                <Link component={ReactLink} to={`/character/${character._id}`} >
+                                <Link component={ReactLink} to={`/region/${region._id}`} >
                                     <CardActionArea>
                                         <CardMedia
                                             component="img"
@@ -84,15 +84,14 @@ const CharacterMain = (props) => {
                                 <CardContent>
                                     <Box display='flex' justifyContent='space-between'>
                                         <Typography gutterBottom variant="h5" component="div">
-                                            {character.name}
+                                            {region.name}
                                         </Typography>
-                                        <IconButton id={character._id} sx={{}} >
+                                        <IconButton id={region._id} sx={{
+                                        }} >
+                                        
                                             <Edit fontSize="small" />
                                         </IconButton>
                                     </Box>
-                                    <Typography variant="body2" color="text.secondary">
-                                        {character.backstory}
-                                    </Typography>
                                 </CardContent>
                                 <CardActions disableSpacing>
                                 </CardActions>
@@ -107,4 +106,4 @@ const CharacterMain = (props) => {
     )
 }
 
-export default CharacterMain
+export default RegionsMain

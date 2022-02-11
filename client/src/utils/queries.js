@@ -119,3 +119,53 @@ export const GET_ME = gql`
     }
   }
 `
+
+export const SINGLE_CHARACTER = gql`
+    query SingleCharacter($_id: ID!) {
+      singleCharacter(_id: $_id) {
+        name
+        description
+        size
+        race {
+          name
+        }
+        class {
+          _id
+        }
+        backstory
+        bonds
+        goals
+        fears
+      }
+    }
+
+`
+
+export const SINGLE_RELIGION = gql`
+    query SingleReligion($id: ID!) {
+      singleReligion(_id: $id) {
+        _id
+        name
+        gods {
+          _id
+          name
+          description
+          domains
+          symbol
+          alignment
+        }
+      }
+    }
+`
+export const SINGLE_GOD = gql`
+    query SingleGod($_id: ID!) {
+      singleGod(_id: $_id) {
+        _id
+        name
+        description
+        domains
+        symbol
+        alignment
+      }
+    }
+`

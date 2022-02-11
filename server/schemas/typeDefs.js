@@ -119,12 +119,10 @@ const typeDefs = gql`
         description: String
     }
     input GodInput {
-        _id: ID
         name: String
         description: String
         domains: [String]
         symbol: String
-        religion: ReligionInput
         alignment: String
     }
     input ReligionInput {
@@ -191,6 +189,11 @@ const typeDefs = gql`
         classes: [Class]!
         countries: [Country]
         worlds: [World]
+        singleCharacter(_id: ID!): Character
+        singleReligion(_id: ID!): Religion
+        singleGod(_id: ID!): God
+        singleRegion(_id: ID!): Region
+        singleMonster(_id: ID!): Monster
         me(_id: ID!): User
         userWorlds(creator: ID!): [World]
         world(name: String!): World
@@ -202,6 +205,11 @@ const typeDefs = gql`
         login(email: String!, password: String!): Auth
         createWorld(world: WorldInput): World
         updateWorld(world: WorldInput): World
+        createCharacter(character: CharacterInput, worldId: ID): World
+        createReligion(religion: ReligionInput, worldId: ID): World
+        createGod(god: GodInput, worldId: ID, religionId: ID): World
+        createRegion(region: RegionInput, worldId: ID): World
+        createMonster(monster: MonsterInput, worldId: ID, regionId: ID): World
     }
 `
 

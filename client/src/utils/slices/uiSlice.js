@@ -1,5 +1,12 @@
 const initialState = {
     drawerOpen: true,
+    activeDrags: 0,
+    deltaPosition: {
+        x: 0, y: 0
+    },
+    controlledPosition: {
+        x: -400, y: 200
+    }
 }
 
 function uiReducer(state = initialState, action) {
@@ -9,7 +16,7 @@ function uiReducer(state = initialState, action) {
                 ...state,
                 drawerOpen: action.payload
             }
-        default: 
+        default:
             return state
     }
 }

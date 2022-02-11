@@ -6,37 +6,36 @@ import FormLabel from '@mui/material/FormLabel'
 import TextField from '@mui/material/TextField'
 import testImg from '../../assets/205201-fantasy_art-landscape-arch.jpg'
 import store from '../../utils/store'
-import { setWorldsAction } from "../../utils/actions";
+import { setWorldAction, setWorldsAction } from "../../utils/actions";
 import { useMutation } from "@apollo/client";
-import { CREATE_WORLD } from "../../utils/mutations";
+import { CREATE_WORLD, CREATE_RELIGION } from "../../utils/mutations";
 import auth from "../../utils/auth";
 import TitleBanner from '../TitleBanner'
 
 
-const CreateWorld = (props) => {
+const CreateReligion = (props) => {
     const { data: { _id } } = auth.getProfile()
     const state = store.getState()
-    const [worldName, setWorldName] = useState('')
-    const [worldDesc, setWorldDesc] = useState('')
-    const [createWorld] = useMutation(CREATE_WORLD)
+    const [religionName, setreligionName] = useState('')
+    const [religionDesc, setreligionDesc] = useState('')
+    const [createReligion] = useMutation(CREATE_RELIGION)
 
-    
+
     const handleSubmit = async () => {
         try {
-            const { data: { createWorld: newWorld } } = await createWorld({
+            const { data: { createReligion: world } } = await createReligion({
                 variables: {
-                    world: {
-                        name: worldName,
-                        description: worldDesc,
-                        creator: _id
-                    }
+                    religion: {
+                        name: religionName,
+                    },
+                    worldId: state.world.openWorld._id
                 }
             })
-            if (newWorld) {
-                setWorldDesc('')
-                setWorldName('')
-                
-                store.dispatch(setWorldsAction([...state.world.worlds, newWorld]))
+            if (world) {
+                setreligionDesc('')
+                setreligionName('')
+
+                store.dispatch(setWorldAction(world))
             }
 
         } catch (err) {
@@ -46,7 +45,7 @@ const CreateWorld = (props) => {
 
     return (
         <>
-            <TitleBanner image={testImg} title='Create Your World' />
+            <TitleBanner image={testImg} title='Create New Religion' />
             <Grid container item spacing={5} margin='20px auto' xs={10} md={9} lg={6} >
                 <FormControl variant="filled"
                     sx={{
@@ -63,36 +62,15 @@ const CreateWorld = (props) => {
                         margin: 'auto'
                     }}
                     >
-                        Enter a name for your world!
+                        Enter a name for the religion
                     </FormLabel>
                     <TextField
-                        label="World Name"
-                        value={worldName}
-                        onChange={(e) => setWorldName(e.target.value)}
+                        label="Religion Name"
+                        value={religionName}
+                        onChange={(e) => setreligionName(e.target.value)}
                         sx={{
                             width: '80%',
                             margin: 'auto'
-                        }}
-
-                    />
-                    <FormLabel
-                        sx={{
-                            padding: '15px',
-                            fontSize: '20px',
-                            margin: 'auto'
-                        }}
-                    >
-                        Write a little bit about your world
-                    </FormLabel>
-                    <TextField
-                        multiline
-                        minRows={10}
-                        value={worldDesc}
-                        onChange={(e) => setWorldDesc(e.target.value)}
-                        sx={{
-                            width: '80%',
-                            margin: 'auto',
-                            paddingBottom: '10px'
                         }}
 
                     />
@@ -102,8 +80,8 @@ const CreateWorld = (props) => {
                         variant='contained'
                         onClick={handleSubmit}
                         sx={{
-                            width: 'min-content',
-                            margin: 'auto'
+                            width: 'max-content',
+                            margin: '10px auto 0 auto'
                         }}
                     >
                         Save and continue
@@ -116,4 +94,4 @@ const CreateWorld = (props) => {
     )
 }
 
-export default CreateWorld
+export default CreateReligion

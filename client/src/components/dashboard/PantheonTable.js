@@ -1,5 +1,6 @@
 import React from "react";
-import { Box, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography, Paper, Grid } from "@mui/material";
+import { Box, Table, TableBody, Card, CardMedia, CardActionArea, CardContent, TableCell, TableContainer, TableHead, TableRow, Typography, Paper, Grid, Link } from "@mui/material";
+import { Link as ReactLink } from "react-router-dom";
 // import Delete from '@mui/icons-material/Delete'
 // import DeleteForeverTwoTone from '@mui/icons-material/DeleteForeverTwoTone'
 // import FilterList from '@mui/icons-material/FilterList'
@@ -9,25 +10,45 @@ import store from "../../utils/store";
 import TitleBanner from "../TitleBanner";
 
 
-const PantheonTable = () => {
+const PantheonTable = ({ theme }) => {
     const { world: { openWorld } } = store.getState()
 
 
     return (
         <>
             <TitleBanner image={testImg} title={`Pantheons of ${openWorld.name}`} />
-            <Grid container justifyContent='center' spacing={3}>
-                {/* <Card display='flex' justifyContent='flex-start' flexWrap='wrap' flexDirection='col' >
-                
-            </Card> */}
-                <Grid item xs={12} sm={11} md={10} lg={8}>
+            <Grid container justifyContent='space-between' spacing={2} >
+                <Grid item xs={12} sm={12} md={12} lg={3}>
+
+                    <Card sx={{ minWidth: 200, maxHeight: 350, margin: 2 }}>
+
+                        <CardMedia
+                            component="img"
+                            height="140"
+                            alt="green iguana"
+                            src={testImg}
+                        />
+                        <Link component={ReactLink} to='/dashboard/create-new-religion' underline="none">
+
+                            <CardContent sx={{
+                                backgroundColor: 'gray'
+                            }}>
+                                <Typography gutterBottom variant="h5" textAlign='center'>
+                                    Create New Religion
+                                </Typography>
+
+                            </CardContent>
+                        </Link>
+                    </Card>
+                </Grid>
+                <Grid container item xs={12} sm={12} md={12} lg={9}>
                     {openWorld.religions?.map((religion) => (
 
                         <TableContainer
                             component={Paper}
                             key={religion._id}
                             sx={{
-                                margin: '20px auto',
+                                margin: 2,
                             }}
                         >
                             <Table
@@ -43,18 +64,28 @@ const PantheonTable = () => {
                                             colSpan={5}
                                         >
 
-                                            <Typography
-                                                fontSize={24} fontFamily='Arial' textAlign='center'
+                                            <Link
+                                                component={ReactLink}
+                                                fontSize={24}
+                                                underline='none'
+                                                to={`/religion/${religion._id}`}
+                                                fontFamily='Arial' textAlign='center'
                                                 width='100%'
                                                 margin='auto'
+                                                sx={{
+                                                    textShadow: '1px 2px 7px lightgray',
+                                                    ':hover': {
+                                                        textShadow: '2px 3px 5px gray'
+                                                    }
+                                                }}
                                             >
                                                 {religion.name}
 
-                                            </Typography>
+                                            </Link>
                                         </TableCell>
                                     </TableRow>
                                     <TableRow>
-                                        <TableCell >
+                                        <TableCell>
                                             Names
                                         </TableCell>
                                         <TableCell align="left">
@@ -76,7 +107,16 @@ const PantheonTable = () => {
                                         >
                                             <TableCell component="th" scope="row" >
                                                 <Typography variant="h6">
-                                                    {god.name}
+                                                    <Link component={ReactLink} underline='none' sx={{
+                                                        textShadow: '1px 1px 7px lightgray',
+                                                        ':hover': {
+                                                            textShadow: '2px 3px 5px gray',
+                                                            
+                                                        }
+                                                    }} to={`/god/${god._id}`}>
+                                                        {god.name}
+                                                    </Link>
+
                                                 </Typography>
                                                 {god.description}
                                             </TableCell>

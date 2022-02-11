@@ -9,7 +9,7 @@ const ImageBanner = styled(Box, { shouldForwardProp: (prop) => prop !== 'image' 
     backgroundImage: `url(${image})`,
     backgroundSize: 'cover',
     backgroundPosition: 'center',
-    position: 'relative',
+    position: 'relative'
 }))
 
 const Title = styled(Typography)(({ theme }) => ({
@@ -20,7 +20,7 @@ const Title = styled(Typography)(({ theme }) => ({
     bottom: 0,
     left: 0,
     minWidth: 'max-content',
-    backgroundColor: '#000000be',
+    backgroundColor: '#000000be'
 }) )
 
 const TitleBanner = ({ image, title }) => {

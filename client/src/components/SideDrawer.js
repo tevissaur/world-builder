@@ -26,6 +26,7 @@ const drawerWidth = 240;
 const BootstrapInput = styled(InputBase)(({ theme }) => ({
     backgroundColor: theme.palette.background.paper,
     borderRadius: 3,
+    zIndex: 0,
     'label + &': {
         marginTop: theme.spacing(3),
     },
@@ -66,11 +67,10 @@ const SideNavListItem = styled(ListItem)({
 })
 
 const SideDrawer = () => {
-    const { ui: { drawerOpen }, world: { worlds } } = store.getState()
+    const { ui: { drawerOpen }, world: { worlds, openWorld } } = store.getState()
 
 
     const handleWorldChange = async (id) => {
-        console.log(id)
         try {
             store.dispatch(setWorldAction(worlds[id]))
         } catch (err) {

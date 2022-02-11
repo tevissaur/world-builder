@@ -36,7 +36,6 @@ export default function SignInSide() {
                     ...loginData
                 }
             })
-            console.log(token, user)
             auth.login(token)
         } catch (err) {
             console.log(err)

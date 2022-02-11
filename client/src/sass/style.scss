@@ -9,7 +9,7 @@ html {
     // background-size: cover;
     // background-repeat: no-repeat;
 }
-body { 
+body {
     margin: 0;
 }
 .wiki-site-wrapper {
@@ -18,7 +18,7 @@ body {
     grid-gap: 0;
     grid-row: 1 / 9;
     margin: 5% auto;
-    height: 90%;
+    height: 100%;
     width: 80%;
     box-shadow: 0 0 10px #111111ad;
     background-color: $background-color;
@@ -103,7 +103,7 @@ body {
             font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
             font-size: 2rem;
         }
-        
+
         .page-header-separator {
             margin-bottom: 0;
             padding-left: 2.5%;
@@ -250,7 +250,6 @@ body {
         display: grid;
         grid-area: f;
         grid-row: 5 / 6;
-        grid-template-areas: "bl bl bm bm bm br br br";
         padding: 10px;
         & > section {
             border: 4px ridge #a52a2a;
@@ -374,13 +373,125 @@ body {
 }
 @media (max-width: 1440px) {
     .wiki-site-wrapper {
-        width: 100%;
-        margin: 0;
+        width: 90%;
+        margin: 5% auto;
+        .main-page-left {
+            padding: 20px;
+            grid-column: 1 / 7;
+        }
     }
 }
 @media (max-width: 1024px) {
-    .wiki-site-wrapper .main-page-right {
-        // grid-column: 0/0;
-        display: none;
+    .wiki-site-wrapper {
+        width: 100%;
+        margin: 0;
+        .main-page-right {
+            // grid-column: 0/0;
+            display: none;
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .wiki-site-wrapper {
+        grid-row: 1 / 7;
+        grid-template-areas: "nav nav nav nav nav nav " "pt pt pt pt pt pt" "quote quote quote quote quote quote" "left left left left left left" "f f f f f f";
+        nav {
+            padding-bottom: 10px;
+            img {
+                display: none;
+            }
+        }
+        .main-page-left {
+            padding: 20px;
+            grid-column: 1 / 7;
+        }
+        footer {
+            grid-row: 5;
+            .bottom-l {
+                grid-column: 1 / 7;
+            }
+            .bottom-m {
+                grid-column: 1 / 7;
+            }
+            .bottom-r {
+                grid-column: 1 / 7;
+            }
+        }
+    }
+}
+
+@media (max-width: 425px) {
+    .wiki-site-wrapper {
+        .main-page-left {
+            .article-title {
+                text-align: left;
+                padding: 3px;
+                width: 97%;
+                font-size: 26px;
+                background-color: rgba(0, 0, 0, 0.2);
+                border: 2.5px double rgba(165, 42, 42, 0.4);
+            }
+            .article-container {
+                width: 100%;
+            }
+
+            .article-container a {
+                text-decoration: none;
+                color: black;
+            }
+
+            .article-container a:hover {
+                color: #a52a2a;
+            }
+
+            .article-container p {
+                text-align: justify;
+                text-indent: 20px;
+                font-size: 18px;
+                width: 90%;
+                margin: 5px;
+                line-height: 1.5;
+            }
+
+            .article-container h2 {
+                width: 80%;
+                font-size: 22px;
+                margin-bottom: 0px;
+            }
+            .article-pic-left {
+                margin: 5px;
+                width: 100%;
+            }
+
+            .article-pic-left figcaption {
+                color: black;
+                font-style: oblique;
+                padding: 2px;
+                text-align: center;
+            }
+
+            .article-pic-left img {
+                width: 90%;
+                border: 5px double brown;
+            }
+
+            .article-pic-right {
+                display: block;
+                width: 90%;
+                margin: 5px;
+            }
+
+            .article-pic-right img {
+                border: 5px double brown;
+                width: 90%;
+            }
+
+            .article-pic-right figcaption {
+                font-style: oblique;
+                text-align: center;
+                padding: 0;
+            }
+        }
     }
 }

@@ -1,12 +1,12 @@
 import React from 'react';
-import Quote from './Quote';
+import Box from '@mui/material/Box';
 
 
 export default function Header(props) {
     return (
-        <div className="page-title-container">
+        <Box component='section' className="page-title-container">
             <h1 className="page-title">Home</h1>
             <hr className="page-header-separator" />
-        </div>
+        </Box>
     )
 }

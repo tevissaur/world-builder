@@ -16,7 +16,7 @@ body {
   -ms-grid-row-span: 8;
   grid-row: 1 / 9;
   margin: 5% auto;
-  height: 90%;
+  height: 100%;
   width: 80%;
   -webkit-box-shadow: 0 0 10px #111111ad;
           box-shadow: 0 0 10px #111111ad;
@@ -363,7 +363,6 @@ body {
   -ms-grid-row: 5;
   -ms-grid-row-span: 1;
   grid-row: 5 / 6;
-      grid-template-areas: "bl bl bm bm bm br br br";
   padding: 10px;
 }
 
@@ -410,9 +409,6 @@ body {
 }
 
 .wiki-site-wrapper footer .bottom-l {
-  -ms-grid-row: 1;
-  -ms-grid-column: 1;
-  -ms-grid-column-span: 2;
   grid-area: bl;
   -ms-grid-column: 1;
   -ms-grid-column-span: 1;
@@ -427,9 +423,6 @@ body {
 }
 
 .wiki-site-wrapper footer .bottom-m {
-  -ms-grid-row: 1;
-  -ms-grid-column: 3;
-  -ms-grid-column-span: 3;
   grid-area: bm;
   -ms-grid-column: 2;
   -ms-grid-column-span: 2;
@@ -475,9 +468,6 @@ body {
 .wiki-site-wrapper footer .bottom-r {
   display: -ms-grid;
   display: grid;
-  -ms-grid-row: 1;
-  -ms-grid-column: 6;
-  -ms-grid-column-span: 3;
   grid-area: br;
   -ms-grid-column: 5;
   -ms-grid-column-span: 4;
@@ -500,14 +490,126 @@ body {
 
 @media (max-width: 1440px) {
   .wiki-site-wrapper {
-    width: 100%;
-    margin: 0;
+    width: 90%;
+    margin: 5% auto;
+  }
+  .wiki-site-wrapper .main-page-left {
+    padding: 20px;
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 6;
+    grid-column: 1 / 7;
   }
 }
 
 @media (max-width: 1024px) {
+  .wiki-site-wrapper {
+    width: 100%;
+    margin: 0;
+  }
   .wiki-site-wrapper .main-page-right {
     display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .wiki-site-wrapper {
+    -ms-grid-row: 1;
+    -ms-grid-row-span: 6;
+    grid-row: 1 / 7;
+        grid-template-areas: "nav nav nav nav nav nav " "pt pt pt pt pt pt" "quote quote quote quote quote quote" "left left left left left left" "f f f f f f";
+  }
+  .wiki-site-wrapper nav {
+    padding-bottom: 10px;
+  }
+  .wiki-site-wrapper nav img {
+    display: none;
+  }
+  .wiki-site-wrapper .main-page-left {
+    padding: 20px;
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 6;
+    grid-column: 1 / 7;
+  }
+  .wiki-site-wrapper footer {
+    -ms-grid-row: 5;
+    grid-row: 5;
+  }
+  .wiki-site-wrapper footer .bottom-l {
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 6;
+    grid-column: 1 / 7;
+  }
+  .wiki-site-wrapper footer .bottom-m {
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 6;
+    grid-column: 1 / 7;
+  }
+  .wiki-site-wrapper footer .bottom-r {
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 6;
+    grid-column: 1 / 7;
+  }
+}
+
+@media (max-width: 425px) {
+  .wiki-site-wrapper .main-page-left .article-title {
+    text-align: left;
+    padding: 3px;
+    width: 97%;
+    font-size: 26px;
+    background-color: rgba(0, 0, 0, 0.2);
+    border: 2.5px double rgba(165, 42, 42, 0.4);
+  }
+  .wiki-site-wrapper .main-page-left .article-container {
+    width: 100%;
+  }
+  .wiki-site-wrapper .main-page-left .article-container a {
+    text-decoration: none;
+    color: black;
+  }
+  .wiki-site-wrapper .main-page-left .article-container a:hover {
+    color: #a52a2a;
+  }
+  .wiki-site-wrapper .main-page-left .article-container p {
+    text-align: justify;
+    text-indent: 20px;
+    font-size: 18px;
+    width: 90%;
+    margin: 5px;
+    line-height: 1.5;
+  }
+  .wiki-site-wrapper .main-page-left .article-container h2 {
+    width: 80%;
+    font-size: 22px;
+    margin-bottom: 0px;
+  }
+  .wiki-site-wrapper .main-page-left .article-pic-left {
+    margin: 5px;
+    width: 100%;
+  }
+  .wiki-site-wrapper .main-page-left .article-pic-left figcaption {
+    color: black;
+    font-style: oblique;
+    padding: 2px;
+    text-align: center;
+  }
+  .wiki-site-wrapper .main-page-left .article-pic-left img {
+    width: 90%;
+    border: 5px double brown;
+  }
+  .wiki-site-wrapper .main-page-left .article-pic-right {
+    display: block;
+    width: 90%;
+    margin: 5px;
+  }
+  .wiki-site-wrapper .main-page-left .article-pic-right img {
+    border: 5px double brown;
+    width: 90%;
+  }
+  .wiki-site-wrapper .main-page-left .article-pic-right figcaption {
+    font-style: oblique;
+    text-align: center;
+    padding: 0;
   }
 }
 /*# sourceMappingURL=style.css.map */

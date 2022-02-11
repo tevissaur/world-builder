@@ -1,9 +1,10 @@
 import React from "react";
+import Box from '@mui/material/Box'
 
 
 export default function SectionLeft(props) {
     return (
-        <div className="main-page-left" id="main-index">
+        <Box component='section' className="main-page-left" id="main-index">
             <article className="article-container">
                 <h1 className="article-title">The Geography of Forene</h1>
                 <figure className="article-pic-right row">
@@ -30,6 +31,6 @@ export default function SectionLeft(props) {
                     Newly declared King of Durglagh, Wendrake Addington, to feast with the Lords of the Torwoods this Festifmar! In a stunning move for the newly crowned statesmen he opts for diplomacy, rather than rile up a ruckus; a peacekeeper, he is. The Emperor has sent his most trusted diplomat, Emile Brack, to aid the green King in his attempt to cool the tensions between him and his former sovereigns, The Lords of the Torwoods. The Treaty of Alderwick will initiate an indefinite truce between the Empire and the Nordlings. Godspeed to Emile, and as always, Godspeed to The Empire!
                 </p>
             </article>
-        </div>
+        </Box>
     )
 }

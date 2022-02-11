@@ -31,8 +31,9 @@ function HideOnScroll(props) {
 const AppBar = styled(MuiAppBar, { shouldForwardProp: (prop) => prop !== 'open', })(({ theme, open }) => ({
     background: theme.palette.primary.main,
     minHeight: '64px',
+    zIndex: 999,
     transition: theme.transitions.create(['width'], {
-        easing: theme.transitions.easing.easeOut,
+        easing: theme.transitions.easing.easeInOut,
         duration: theme.transitions.duration.leavingScreen,
     }),
     ...(open && {
@@ -42,7 +43,7 @@ const AppBar = styled(MuiAppBar, { shouldForwardProp: (prop) => prop !== 'open',
             marginLeft: '0'
         },
         transition: theme.transitions.create(['width'], {
-            easing: theme.transitions.easing.easeOut,
+            easing: theme.transitions.easing.easeInOut,
             duration: theme.transitions.duration.enteringScreen,
         }),
     }),
@@ -75,7 +76,7 @@ const TopNav = () => {
                         onClick={() => store.dispatch(setDrawerOpen(!drawerOpen))}
                         edge="start"
                         sx={{
-                            mr: 2,
+                            m: 1,
                             backgroundColor: 'darkgrey',
                             padding: '5.5px 7.5px',
                             borderRadius: '3px',

@@ -6,39 +6,44 @@ import FormLabel from '@mui/material/FormLabel'
 import TextField from '@mui/material/TextField'
 import testImg from '../../assets/205201-fantasy_art-landscape-arch.jpg'
 import store from '../../utils/store'
-import { setWorldsAction } from "../../utils/actions";
 import { useMutation } from "@apollo/client";
-import { CREATE_WORLD } from "../../utils/mutations";
+import { CREATE_CHARACTER } from "../../utils/mutations";
 import auth from "../../utils/auth";
 import TitleBanner from '../TitleBanner'
+import { addCharacter, setWorldAction } from "../../utils/actions";
 
 
-const CreateWorld = (props) => {
+const CreateCharacter = (props) => {
     const { data: { _id } } = auth.getProfile()
-    const state = store.getState()
-    const [worldName, setWorldName] = useState('')
-    const [worldDesc, setWorldDesc] = useState('')
-    const [createWorld] = useMutation(CREATE_WORLD)
+    const { world: { openWorld: { _id: worldId, characters } } } = store.getState()
 
-    
+    const [characterName, setCharacterName] = useState('')
+    const [characterDesc, setCharacterDesc] = useState('')
+    const [characterBackstory, setCharacterBackstory] = useState('')
+    const [createCharacter] = useMutation(CREATE_CHARACTER)
+
+
     const handleSubmit = async () => {
         try {
-            const { data: { createWorld: newWorld } } = await createWorld({
-                variables: {
-                    world: {
-                        name: worldName,
-                        description: worldDesc,
-                        creator: _id
+            if (characterName) {
+                const { data: { createCharacter: world } } = await createCharacter({
+                    variables: {
+                        character: {
+                            name: characterName,
+                            description: characterDesc,
+                            backstory: characterBackstory
+                        },
+                        worldId
                     }
-                }
-            })
-            if (newWorld) {
-                setWorldDesc('')
-                setWorldName('')
-                
-                store.dispatch(setWorldsAction([...state.world.worlds, newWorld]))
-            }
+                })
 
+                if (world) {
+                    setCharacterName('')
+                    setCharacterDesc('')
+                    store.dispatch(setWorldAction(world))
+
+                }
+            }
         } catch (err) {
             console.log(err)
         }
@@ -46,7 +51,7 @@ const CreateWorld = (props) => {
 
     return (
         <>
-            <TitleBanner image={testImg} title='Create Your World' />
+            <TitleBanner image={testImg} title='Create New Character' />
             <Grid container item spacing={5} margin='20px auto' xs={10} md={9} lg={6} >
                 <FormControl variant="filled"
                     sx={{
@@ -63,12 +68,13 @@ const CreateWorld = (props) => {
                         margin: 'auto'
                     }}
                     >
-                        Enter a name for your world!
+                        What is this character's name?
                     </FormLabel>
                     <TextField
-                        label="World Name"
-                        value={worldName}
-                        onChange={(e) => setWorldName(e.target.value)}
+                        label="Character Name"
+                        value={characterName}
+                        onChange={(e) => setCharacterName(e.target.value)}
+                        required
                         sx={{
                             width: '80%',
                             margin: 'auto'
@@ -82,13 +88,36 @@ const CreateWorld = (props) => {
                             margin: 'auto'
                         }}
                     >
-                        Write a little bit about your world
+                        Add a description
                     </FormLabel>
                     <TextField
                         multiline
-                        minRows={10}
-                        value={worldDesc}
-                        onChange={(e) => setWorldDesc(e.target.value)}
+                        minRows={8}
+                        value={characterDesc}
+                        onChange={(e) => setCharacterDesc(e.target.value)}
+                        required
+                        sx={{
+                            width: '80%',
+                            margin: 'auto',
+                            paddingBottom: '10px'
+                        }}
+
+                    />
+                    <FormLabel
+                        sx={{
+                            padding: '15px',
+                            fontSize: '20px',
+                            margin: 'auto'
+                        }}
+                    >
+                        Do they have a backstory yet?
+                    </FormLabel>
+                    <TextField
+                        multiline
+                        minRows={8}
+                        value={characterBackstory}
+                        onChange={(e) => setCharacterBackstory(e.target.value)}
+                        required
                         sx={{
                             width: '80%',
                             margin: 'auto',
@@ -116,4 +145,4 @@ const CreateWorld = (props) => {
     )
 }
 
-export default CreateWorld
+export default CreateCharacter

@@ -1,9 +1,10 @@
 import React from "react";
+import Box from '@mui/material/Box'
 
 export default function Footer(props) {
     return (
-        <footer>
-            <section className="bottom-l">
+        <Box component='footer'>
+            {/* <section className="bottom-l">
                 <h2>Find us around the web!</h2>
                 <p className="links">
                     <a href="https://soundcloud.com/survivalcheck" ><img alt="some alt text" src="/assets/orange_white_64-94fc761.png" /></a>
@@ -18,7 +19,7 @@ export default function Footer(props) {
                 <a href="DnD_World_Setting_Site_template.html" className="download-button">Template</a>
 
 
-            </section>
+            </section> */}
             <section className="bottom-r">
                 <h2>Contact Us Here!</h2>
                 <p>Want to add value to this campaign setting?</p>
@@ -35,6 +36,6 @@ export default function Footer(props) {
                 </form>
             </section>
 
-        </footer>
+        </Box>
     )
 }

@@ -40,7 +40,6 @@ export default function SignUp() {
                     ...loginData
                 }
             })
-            console.log(user)
             auth.login(token)
             setLoginData({
                 username: '',

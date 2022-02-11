@@ -20,9 +20,36 @@ export const setCharacters = (payload) => {
 }
 
 export const setDrawerOpen = (payload) => {
-    console.log(payload)
     return {
         type: 'ui/drawer',
+        payload
+    }
+}
+
+export const setCharacter = (payload) => {
+    return {
+        type: 'character/data',
+        payload
+    }
+}
+
+export const addCharacter = (payload) => {
+    return {
+        type: 'world/addCharacter',
+        payload
+    }
+}
+
+export const setReligion = (payload) => {
+    return {
+        type: 'religion/data',
+        payload
+    }
+}
+
+export const setGod = (payload) => {
+    return {
+        type: 'god/data',
         payload
     }
 }
