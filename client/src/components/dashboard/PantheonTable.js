@@ -68,7 +68,7 @@ const PantheonTable = ({ theme }) => {
                                                 component={ReactLink}
                                                 fontSize={24}
                                                 underline='none'
-                                                to={`/religion/${religion._id}`}
+                                                to={`/dashboard/religion/${religion._id}`}
                                                 fontFamily='Arial' textAlign='center'
                                                 width='100%'
                                                 margin='auto'
@@ -113,7 +113,7 @@ const PantheonTable = ({ theme }) => {
                                                             textShadow: '2px 3px 5px gray',
                                                             
                                                         }
-                                                    }} to={`/god/${god._id}`}>
+                                                    }} to={`/dashboard/god/${god._id}`}>
                                                         {god.name}
                                                     </Link>
 

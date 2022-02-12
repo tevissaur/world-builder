@@ -3,7 +3,7 @@ const { Schema, model } = require("mongoose");
 const regionSchema = new Schema({
     name: {
         type: String,
-        required: "Please enter the name of the race"
+        required: "Please enter the name of the region"
     },
     description: {
         type: String

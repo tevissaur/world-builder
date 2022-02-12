@@ -70,7 +70,7 @@ const CharacterMain = (props) => {
                         <Grid item xs={12} sm={12} md={6} key={character.name}>
 
                             <Card sx={{ minWidth: '30%', margin: 2 }}>
-                                <Link component={ReactLink} to={`/character/${character._id}`} >
+                                <Link component={ReactLink} to={`/dashboard/character/${character._id}`} >
                                     <CardActionArea>
                                         <CardMedia
                                             component="img"

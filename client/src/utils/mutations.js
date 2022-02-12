@@ -248,3 +248,107 @@ export const CREATE_GOD = gql`
         }
     }
 `
+export const CREATE_MONSTER = gql`
+    mutation CreateMonster($monster: MonsterInput, $worldId: ID, $regionId: ID) {
+        createMonster(monster: $monster, worldId: $worldId, regionId: $regionId) {
+            _id
+            name
+            regions {
+                _id
+                name
+                countries {
+                    _id
+                    name
+                    government {
+                    style
+                    }
+                    cities {
+                    _id
+                    name
+                    }
+                }
+                landmarks {
+                    name
+                    description
+                }
+                monsters {
+                    _id
+                }
+            }
+            religions {
+                _id
+                name
+                gods {
+                    _id
+                    name
+                    description
+                    domains
+                    symbol
+                    alignment
+                }
+            }
+            description
+            characters {
+                _id
+                name
+                description
+                backstory
+                bonds
+                goals
+                fears
+            }
+        }
+    }
+`
+export const CREATE_REGION = gql`
+    mutation CreateRegion($region: RegionInput, $worldId: ID) {
+        createRegion(region: $region, worldId: $worldId) {
+            _id
+            name
+            regions {
+                _id
+                name
+                countries {
+                    _id
+                    name
+                    government {
+                    style
+                    }
+                    cities {
+                    _id
+                    name
+                    }
+                }
+                landmarks {
+                    name
+                    description
+                }
+                monsters {
+                    _id
+                }
+            }
+            religions {
+                _id
+                name
+                gods {
+                    _id
+                    name
+                    description
+                    domains
+                    symbol
+                    alignment
+                }
+            }
+            description
+            characters {
+                _id
+                name
+                description
+                backstory
+                bonds
+                goals
+                fears
+            }
+        }
+    }
+`

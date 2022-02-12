@@ -70,7 +70,7 @@ const RegionsMain = (props) => {
                         <Grid item xs={12} sm={12} md={6} key={region.name}>
 
                             <Card sx={{ minWidth: '30%', margin: 2 }}>
-                                <Link component={ReactLink} to={`/region/${region._id}`} >
+                                <Link component={ReactLink} to={`/dashboard/region/${region._id}`} >
                                     <CardActionArea>
                                         <CardMedia
                                             component="img"

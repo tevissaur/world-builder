@@ -68,17 +68,13 @@ const SingleGod = (props) => {
                         <Grid item xs={12} sm={12} md={6} key={god.name}>
 
                             <Card sx={{ minWidth: '30%', margin: 2 }}>
-                                <Link component={ReactLink} to={`/god/${god._id}`} >
-                                    <CardActionArea>
-                                        <CardMedia
-                                            component="img"
-                                            height="140"
-                                            alt="green iguana"
-                                            src={placeholderImage}
-                                        />
-                                    </CardActionArea>
 
-                                </Link>
+                                <CardMedia
+                                    component="img"
+                                    height="140"
+                                    alt="green iguana"
+                                    src={placeholderImage}
+                                />
                                 <CardContent>
                                     <Box display='flex' justifyContent='space-between'>
                                         <Typography gutterBottom variant="h5" component="div">

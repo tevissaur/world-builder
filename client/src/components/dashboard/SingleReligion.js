@@ -88,7 +88,7 @@ const SingleReligion = () => {
                                 <Grid item xs={12} sm={12} md={6} key={god.name}>
 
                                     <Card sx={{ minWidth: '30%', margin: 2 }}>
-                                        <Link component={ReactLink} to={`/god/${god._id}`} >
+                                        <Link component={ReactLink} to={`/dashboard/god/${god._id}`} >
                                             <CardMedia
                                                 component="img"
                                                 height="140"

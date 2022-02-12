@@ -12,6 +12,7 @@ import SingleReligion from './components/dashboard/SingleReligion'
 import GodsMain from './components/dashboard/SingleGod';
 import CreateGod from './components/dashboard/CreateGod';
 import RegionsMain from './components/dashboard/RegionsMain';
+import CreateRegion from './components/dashboard/CreateRegion';
 
 const client = new ApolloClient({
   uri: '/graphql',
@@ -48,16 +49,17 @@ function App() {
               <Route index element={<Main />} />
               <Route path="create-new-world" element={<CreateWorld />} />
               <Route path="create-new-religion" element={<CreateReligion />} />
+              <Route path="create-new-region" element={<CreateRegion />} />
               <Route path="create-new-god" element={<CreateGod />} />
               <Route path="create-new-character" element={<CreateCharacter />} />
               <Route path="pantheon" element={<PantheonTable />} />
               <Route path="characters" element={<CharacterMain />} />
               <Route path="regions" element={<RegionsMain />} />
               <Route path="bestiary" element={<PantheonTable />} />
+              <Route path="religion/:id" element={<SingleReligion />} />
+              <Route path="character/:_id" element={<SingleCharacter />} />
+              <Route path="god/:_id" element={<GodsMain />} />
             </Route>
-            <Route path="religion/:id" element={<SingleReligion />}/>
-            <Route path="character/:_id" element={<SingleCharacter />} />
-            <Route path="god/:_id" element={<GodsMain />} />
 
 
           </Route>
