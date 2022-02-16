@@ -38,7 +38,8 @@ const ExpandMore = styled((props) => {
 const SingleCharacter = (props) => {
     const { character: { character }, world: { openWorld } } = store.getState()
     const [expanded, setExpanded] = useState(false)
-    const { _id } = useParams()
+    const { _id, ...params } = useParams()
+    console.log(_id, params)
     const { data, loading, error } = useQuery(SINGLE_CHARACTER, {
         variables: {
             _id

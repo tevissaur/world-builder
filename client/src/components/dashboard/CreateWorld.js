@@ -46,7 +46,7 @@ const CreateWorld = (props) => {
 
     return (
         <>
-            <TitleBanner image={testImg} title='Create Your World' />
+            <TitleBanner image={testImg} title='Create Your World' paths={['dashboard', 'create world']} />
             <Grid container item spacing={5} margin='20px auto' xs={10} md={9} lg={6} >
                 <FormControl variant="filled"
                     sx={{

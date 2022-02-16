@@ -1,12 +1,6 @@
 const initialState = {
     drawerOpen: true,
-    activeDrags: 0,
-    deltaPosition: {
-        x: 0, y: 0
-    },
-    controlledPosition: {
-        x: -400, y: 200
-    }
+    modalOpen: false
 }
 
 function uiReducer(state = initialState, action) {
@@ -15,6 +9,11 @@ function uiReducer(state = initialState, action) {
             return {
                 ...state,
                 drawerOpen: action.payload
+            }
+        case 'ui/modal':
+            return {
+                ...state,
+                modalOpen: action.payload
             }
         default:
             return state

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import store from "../../utils/store";
 import { CardActionArea, CardActions } from '@mui/material'
 import IconButton from '@mui/material/IconButton'
@@ -8,35 +8,40 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
+import Modal from '@mui/material/Modal';
 import Edit from '@mui/icons-material/Edit'
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import styled from '@mui/material/styles/styled'
 import placeholderImage from '../../assets/river_mountains.jpeg'
 import { Link as ReactLink } from 'react-router-dom'
 import Link from '@mui/material/Link'
 import TitleBanner from "../TitleBanner";
 import testImg from '../../assets/205201-fantasy_art-landscape-arch.jpg'
-
-const ExpandMore = styled((props) => {
-    const { expand, ...other } = props;
-    return <IconButton {...other} />;
-})(({ theme, expand }) => ({
-    transform: !expand ? 'rotate(0deg)' : 'rotate(180deg)',
-    marginLeft: 'auto',
-    transition: theme.transitions.create('transform', {
-        duration: theme.transitions.duration.shortest,
-    }),
-}));
+import { setModalOpen } from "../../utils/actions";
+import SingleCharacter from "./SingleCharacter";
 
 
+const style = {
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    width: 400,
+    bgcolor: 'background.paper',
+    border: '2px solid #000',
+    boxShadow: 24,
+    p: 4,
+};
 
-const CharacterMain = (props) => {
-    const { world: { openWorld } } = store.getState()
-    const [expanded, setExpanded] = useState(false)
+const CharacterMain = () => {
+    const { world: { openWorld }, ui: { modalOpen } } = store.getState()
 
-    const handleExpandClick = () => {
-        setExpanded(!expanded);
+    const handleModal = () => {
+
+        store.dispatch(setModalOpen(!modalOpen))
     };
+    useEffect(() => {
+
+    }, [modalOpen])
 
     return (
         <>
@@ -70,7 +75,7 @@ const CharacterMain = (props) => {
                         <Grid item xs={12} sm={12} md={6} key={character.name}>
 
                             <Card sx={{ minWidth: '30%', margin: 2 }}>
-                                <Link component={ReactLink} to={`/dashboard/character/${character._id}`} >
+                                <Link component={ReactLink} to={`/dashboard/characters?cid=${character._id}`} >
                                     <CardActionArea>
                                         <CardMedia
                                             component="img"
@@ -86,7 +91,7 @@ const CharacterMain = (props) => {
                                         <Typography gutterBottom variant="h5" component="div">
                                             {character.name}
                                         </Typography>
-                                        <IconButton id={character._id} sx={{}} >
+                                        <IconButton id={character._id} sx={{}} onClick={handleModal} >
                                             <Edit fontSize="small" />
                                         </IconButton>
                                     </Box>
@@ -102,6 +107,14 @@ const CharacterMain = (props) => {
                     ))}
                 </Grid>
             </Grid>
+                <SingleCharacter />
+            <Modal
+                open={modalOpen}
+                onClose={handleModal}
+                aria-labelledby="modal-modal-title"
+                aria-describedby="modal-modal-description"
+            >
+            </Modal>
         </>
 
     )

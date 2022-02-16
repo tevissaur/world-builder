@@ -1,6 +1,8 @@
 import React from 'react'
 import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
+import Breadcrumbs from './Breadcrumbs'
+import Link from '@mui/material/Link'
 import styled from '@mui/material/styles/styled'
 
 
@@ -23,7 +25,7 @@ const Title = styled(Typography)(({ theme }) => ({
     backgroundColor: '#000000be'
 }) )
 
-const TitleBanner = ({ image, title }) => {
+const TitleBanner = ({ image, title, paths }) => {
 
 
     return (
@@ -31,7 +33,6 @@ const TitleBanner = ({ image, title }) => {
             <Title>
                 {title}
             </Title>
-
         </ImageBanner>
     )
 }

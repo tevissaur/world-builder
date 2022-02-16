@@ -200,16 +200,35 @@ const typeDefs = gql`
     }
 
     type Mutation {
+
         createUser(username: String!, password: String!, email: String!): Auth
         updateToken(userId: ID!): Auth
         login(email: String!, password: String!): Auth
+
         createWorld(world: WorldInput): World
         updateWorld(world: WorldInput): World
+        deleteWorld(worldId: ID): World
+
         createCharacter(character: CharacterInput, worldId: ID): World
+        updateCharacter(character: CharacterInput, worldId: ID): World
+        deleteCharacter(characterId: ID, worldId: ID): World
+
         createReligion(religion: ReligionInput, worldId: ID): World
+        updateReligion(religion: ReligionInput, worldId: ID): World
+        deleteReligion(religionId: ID, worldId: ID): World
+
         createGod(god: GodInput, worldId: ID, religionId: ID): World
+        updateGod(god: GodInput, worldId: ID, religionId: ID): World
+        deleteGod(godId: ID, worldId: ID): World
+
         createRegion(region: RegionInput, worldId: ID): World
+        updateRegion(region: RegionInput, worldId: ID): World
+        deleteRegion(regionId: ID, worldId: ID): World
+
         createMonster(monster: MonsterInput, worldId: ID, regionId: ID): World
+        updateMonster(monster: MonsterInput, worldId: ID, regionId: ID): World
+        deleteMonster(monsterId: ID, worldId: ID): World
+        
     }
 `
 

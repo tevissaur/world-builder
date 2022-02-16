@@ -26,6 +26,13 @@ export const setDrawerOpen = (payload) => {
     }
 }
 
+export const setModalOpen = (payload) => {
+    return {
+        type: 'ui/modal',
+        payload
+    }
+}
+
 export const setCharacter = (payload) => {
     return {
         type: 'character/data',
