@@ -12,7 +12,7 @@ import { CREATE_GOD } from "../../utils/mutations";
 import auth from "../../utils/auth";
 import TitleBanner from '../TitleBanner'
 import { Checkbox, FormControlLabel, FormGroup } from "@mui/material";
-import { useParams } from "react-router-dom";
+import { unstable_HistoryRouter, useParams } from "react-router-dom";
 
 
 const CreateGod = (props) => {
@@ -24,6 +24,8 @@ const CreateGod = (props) => {
     const [godSymbol, setGodSymbol] = useState('')
     const [godDomains, setGodDomains] = useState([])
     const [createGod] = useMutation(CREATE_GOD)
+
+
     useEffect(() => {
         console.log(godDomains)
     }, [godDomains])
@@ -59,6 +61,7 @@ const CreateGod = (props) => {
                 setGodSymbol('')
 
                 store.dispatch(setWorldAction(world))
+                window.history.back()
             }
 
         } catch (err) {

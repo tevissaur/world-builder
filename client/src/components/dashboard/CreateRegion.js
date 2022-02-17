@@ -34,6 +34,7 @@ const CreateRegion = (props) => {
                 setRegionName('')
                 
                 store.dispatch(setWorldAction(world))
+                window.history.back()
             }
 
         } catch (err) {

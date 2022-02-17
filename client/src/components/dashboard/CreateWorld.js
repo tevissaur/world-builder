@@ -37,6 +37,7 @@ const CreateWorld = (props) => {
                 setWorldName('')
                 
                 store.dispatch(setWorldsAction([...state.world.worlds, newWorld]))
+                window.history.back()
             }
 
         } catch (err) {

@@ -123,6 +123,7 @@ export const GET_ME = gql`
 export const SINGLE_CHARACTER = gql`
     query SingleCharacter($_id: ID!) {
       singleCharacter(_id: $_id) {
+        _id
         name
         description
         size

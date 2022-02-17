@@ -26,11 +26,6 @@ const MainLayout = () => {
             id: _id
         }
     })
-    // const { data: worldData, loading: worldLoading, error: worldError } = useQuery(GET_USER_WORLDS, {
-    //     variables: {
-    //         creator: _id
-    //     }
-    // })
 
 
 
@@ -39,8 +34,12 @@ const MainLayout = () => {
             console.log(error)
         } else {
 
-            loading ? console.log(loading) : store.dispatch(setWorldAction(data?.me?.worlds[0]))
-
+            if (JSON.parse(localStorage.getItem('last-open-world'))) {
+                store.dispatch(setWorldAction(JSON.parse(localStorage.getItem('last-open-world'))))
+            } else {
+                loading ? console.log(loading) : store.dispatch(setWorldAction(data?.me?.worlds[0]))
+            }
+            
             loading ? console.log(loading) : store.dispatch(setWorldsAction(data?.me?.worlds))
         }
     }, [data, loading, _id, error])
@@ -52,7 +51,7 @@ const MainLayout = () => {
     return (
         <Box sx={{ display: 'flex' }}>
             <TopNav />
-            <SideDrawer />
+            <SideDrawer loading={loading} />
 
             <MainContainer
                 open={drawerOpen}

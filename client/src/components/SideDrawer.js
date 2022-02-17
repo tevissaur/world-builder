@@ -66,12 +66,13 @@ const SideNavListItem = styled(ListItem)({
     }
 })
 
-const SideDrawer = () => {
+const SideDrawer = ({ loading }) => {
     const { ui: { drawerOpen }, world: { worlds, openWorld } } = store.getState()
 
 
     const handleWorldChange = async (id) => {
         try {
+            localStorage.setItem('last-open-world', JSON.stringify(worlds[id]))
             store.dispatch(setWorldAction(worlds[id]))
         } catch (err) {
             console.log(err)
@@ -104,30 +105,37 @@ const SideDrawer = () => {
                             sx={{ marginLeft: '5px', color: 'white', fontSize: '20px' }}>
                             Open World
                         </InputLabel>
-                        <Select
-                            id='world-select'
-                            label="Open World"
-                            defaultValue={0}
-                            onChange={(e) => handleWorldChange(e.target.value)}
-                            input={<BootstrapInput />}
-                            MenuProps={{
-                                PaperProps: {
-                                    sx: {
-                                        left: '1px!important'
+                        {loading ? (
+                            <>
+
+                            </>
+                        ) : (
+                            <Select
+                                id='world-select'
+                                label="Open World"
+                                defaultValue={''}
+                                onChange={(e) => handleWorldChange(e.target.value)}
+                                inputProps={{ 'aria-label': 'controlled' }}
+                                input={<BootstrapInput />}
+                                MenuProps={{
+                                    PaperProps: {
+                                        sx: {
+                                            left: '1px!important'
+                                        },
                                     },
-                                },
-                            }}
-                        >
-                            {worlds?.map((world, itx) => (
-                                <MenuItem
-                                    id={itx}
-                                    value={itx}
-                                    key={world._id}
-                                >
-                                    {world.name}
-                                </MenuItem>
-                            ))}
-                        </Select>
+                                }}
+                            >
+                                {worlds?.map((world, itx) => (
+                                    <MenuItem
+                                        id={itx}
+                                        value={itx}
+                                        key={world._id}
+                                    >
+                                        {world.name}
+                                    </MenuItem>
+                                ))}
+                            </Select>)}
+
                     </FormControl>
                     <List>
                         <Link component={ReactLink} to='/dashboard/create-new-world' underline='none' color='white' >

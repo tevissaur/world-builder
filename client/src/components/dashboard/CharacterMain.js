@@ -12,7 +12,7 @@ import Modal from '@mui/material/Modal';
 import Edit from '@mui/icons-material/Edit'
 import styled from '@mui/material/styles/styled'
 import placeholderImage from '../../assets/river_mountains.jpeg'
-import { Link as ReactLink } from 'react-router-dom'
+import { Link as ReactLink, useLocation } from 'react-router-dom'
 import Link from '@mui/material/Link'
 import TitleBanner from "../TitleBanner";
 import testImg from '../../assets/205201-fantasy_art-landscape-arch.jpg'
@@ -25,11 +25,6 @@ const style = {
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
-    width: 400,
-    bgcolor: 'background.paper',
-    border: '2px solid #000',
-    boxShadow: 24,
-    p: 4,
 };
 
 const CharacterMain = () => {
@@ -75,7 +70,7 @@ const CharacterMain = () => {
                         <Grid item xs={12} sm={12} md={6} key={character.name}>
 
                             <Card sx={{ minWidth: '30%', margin: 2 }}>
-                                <Link component={ReactLink} to={`/dashboard/characters?cid=${character._id}`} >
+                                <Link component={ReactLink} to={`/dashboard/characters?cid=${character._id}`} onClick={handleModal} >
                                     <CardActionArea>
                                         <CardMedia
                                             component="img"
@@ -91,9 +86,12 @@ const CharacterMain = () => {
                                         <Typography gutterBottom variant="h5" component="div">
                                             {character.name}
                                         </Typography>
-                                        <IconButton id={character._id} sx={{}} onClick={handleModal} >
-                                            <Edit fontSize="small" />
-                                        </IconButton>
+                                        <Link id={character._id} sx={{}} component={ReactLink} to={`/dashboard/characters?cid=${character._id}`} onClick={handleModal} >
+                                            <IconButton>
+
+                                                <Edit fontSize="small" />
+                                            </IconButton>
+                                        </Link>
                                     </Box>
                                     <Typography variant="body2" color="text.secondary">
                                         {character.backstory}
@@ -107,13 +105,16 @@ const CharacterMain = () => {
                     ))}
                 </Grid>
             </Grid>
-                <SingleCharacter />
             <Modal
                 open={modalOpen}
                 onClose={handleModal}
                 aria-labelledby="modal-modal-title"
                 aria-describedby="modal-modal-description"
             >
+                <Box style={style}>
+                    <SingleCharacter />
+
+                </Box>
             </Modal>
         </>
 

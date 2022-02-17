@@ -36,6 +36,7 @@ const CreateReligion = (props) => {
                 setreligionName('')
 
                 store.dispatch(setWorldAction(world))
+                window.history.back()
             }
 
         } catch (err) {

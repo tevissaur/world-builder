@@ -41,7 +41,7 @@ const CreateCharacter = (props) => {
                     setCharacterName('')
                     setCharacterDesc('')
                     store.dispatch(setWorldAction(world))
-
+                    window.location.replace('/dashboard/characters')
                 }
             }
         } catch (err) {
