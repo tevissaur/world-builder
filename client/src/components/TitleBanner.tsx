@@ -4,9 +4,10 @@ import Typography from '@mui/material/Typography'
 import Breadcrumbs from './Breadcrumbs'
 import Link from '@mui/material/Link'
 import styled from '@mui/material/styles/styled'
+import { Theme } from '@mui/system'
 
 
-const ImageBanner = styled(Box, { shouldForwardProp: (prop) => prop !== 'image' })(({ image, theme }) => ({
+const ImageBanner = styled(Box, { shouldForwardProp: (prop) => prop !== 'image' })(({ image, theme } : { image: string; theme?: Theme }) => ({
     height: '200px',
     backgroundImage: `url(${image})`,
     backgroundSize: 'cover',
@@ -14,7 +15,7 @@ const ImageBanner = styled(Box, { shouldForwardProp: (prop) => prop !== 'image' 
     position: 'relative'
 }))
 
-const Title = styled(Typography)(({ theme }) => ({
+const Title = styled(Typography)(({ theme }: { theme?: Theme }) => ({
     color: 'white',
     padding: '10px 15px',
     position: 'absolute',
@@ -25,7 +26,7 @@ const Title = styled(Typography)(({ theme }) => ({
     backgroundColor: '#000000be'
 }) )
 
-const TitleBanner = ({ image, title, paths }) => {
+const TitleBanner = ({ image, title }: { image: string; title: string; }) => {
 
 
     return (

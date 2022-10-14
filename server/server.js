@@ -22,6 +22,7 @@ const server = new ApolloServer({
 
 app.use(express.urlencoded({ extended: false }))
 app.use(express.json())
+
 // app.use(function (req, res, next) {
 //   res.setHeader('Cache-control', 'public, max-age=36000000')
 // })

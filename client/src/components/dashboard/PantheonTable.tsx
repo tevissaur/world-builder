@@ -6,17 +6,18 @@ import { Link as ReactLink } from "react-router-dom";
 // import FilterList from '@mui/icons-material/FilterList'
 // import { visuallyHidden } from '@mui/utils'
 import testImg from '../../assets/205201-fantasy_art-landscape-arch.jpg'
-import store from "../../utils/store";
+import store, { RootState } from "../../utils/store";
 import TitleBanner from "../TitleBanner";
+import { useSelector } from "react-redux";
 
 
-const PantheonTable = ({ theme }) => {
-    const { world: { openWorld } } = store.getState()
+const PantheonTable = () => {
+    const { world: { openWorld } } = useSelector((state: RootState) => state)
 
 
     return (
         <>
-            <TitleBanner image={testImg} title={`Pantheons of ${openWorld.name}`} />
+            <TitleBanner image={testImg} title={`Pantheons of ${openWorld?.name}`} />
             <Grid container justifyContent='space-between' spacing={2} >
                 <Grid item xs={12} sm={12} md={12} lg={3}>
 
@@ -42,11 +43,11 @@ const PantheonTable = ({ theme }) => {
                     </Card>
                 </Grid>
                 <Grid container item xs={12} sm={12} md={12} lg={9}>
-                    {openWorld.religions?.map((religion) => (
+                    {openWorld?.religions?.map((religion) => (
 
                         <TableContainer
                             component={Paper}
-                            key={religion._id}
+                            key={religion?._id}
                             sx={{
                                 margin: 2,
                             }}
@@ -100,7 +101,7 @@ const PantheonTable = ({ theme }) => {
                                     </TableRow>
                                 </TableHead>
                                 <TableBody>
-                                    {religion.gods?.map((god) => (
+                                    {religion?.gods?.map((god) => (
                                         <TableRow
                                             key={Math.floor(Math.random() * 10000)}
                                             sx={{ '&:last-child td, &:last-child th': { border: 0 } }}

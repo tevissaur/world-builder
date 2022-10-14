@@ -3,10 +3,11 @@ import Link from '@mui/material/Link'
 import Box from '@mui/material/Box'
 import React from 'react';
 import { Link as ReactLink } from 'react-router-dom'
-import store from '../../utils/store'
+import { RootState } from '../../utils/store'
+import { useSelector } from 'react-redux';
 
-export default function Nav(props) {
-  const { world: { openWorld } } = store.getState()
+const Nav = () => {
+  const { world: { openWorld } } = useSelector((state: RootState) => state)
 
 
 
@@ -16,7 +17,7 @@ export default function Nav(props) {
 
         <img className="logo" src="/assets/border.png" alt="This is alt text" />
         <Typography variant='h4' className='world-name'>
-          {openWorld.name}
+          {openWorld?.name}
         </Typography>
 
 
@@ -79,3 +80,6 @@ export default function Nav(props) {
     </>
   )
 }
+
+
+export default Nav

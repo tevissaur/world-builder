@@ -5,24 +5,10 @@ import decode from 'jwt-decode';
 class AuthService {
   // get user data
   getProfile() {
-    let profile
-    let newProfile
-    try {
-      profile = decode(this.getToken())
-
-    } catch (err) {
-      profile = {
-        data: {
-          _id: ''
-        }
-      }
+    if (!this.isTokenExpired(this.getToken()) && this.loggedIn()) {
+      return decode(this.getToken());
     }
-    newProfile = {
-      data: {
-        _id: profile.data._id
-      }
-    }
-    return newProfile
+    return null
   }
 
   // check if user's logged in
@@ -49,17 +35,17 @@ class AuthService {
     return localStorage.getItem('id_token');
   }
 
-  login(idToken) {
+  login(idToken, redirectUrl) {
     // Saves user token to localStorage
     localStorage.setItem('id_token', idToken);
-    window.location.assign('/dashboard');
+    window.location.assign(`/${redirectUrl}`);
   }
 
   logout() {
     // Clear user token and profile data from localStorage
     localStorage.removeItem('id_token');
     // this will reload the page and reset the state of the application
-    window.location.assign('/');
+    window.location.assign('/home');
   }
 }
 

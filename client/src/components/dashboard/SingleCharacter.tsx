@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import store from "../../utils/store";
+import store, { RootState } from "../../utils/store";
 import { useLocation, useParams, Link as ReactLink } from 'react-router-dom'
 import { CardActionArea, CardActions, Link } from '@mui/material'
 import IconButton from '@mui/material/IconButton'
@@ -15,11 +15,14 @@ import placeholderImage from '../../assets/river_mountains.jpeg'
 import { SINGLE_CHARACTER } from "../../utils/queries";
 import { useQuery } from "@apollo/client";
 import { setCharacter } from "../../utils/actions";
+import { useDispatch, useSelector } from "react-redux";
+import { setActiveCharacter } from "../../utils/slices/characterSlice";
 
 
 
-const SingleCharacter = (props) => {
-    const { character: { character }, world: { openWorld } } = store.getState()
+const SingleCharacter = () => {
+    const { character: { activeCharacter }, world: { openWorld }, ui } = useSelector((state: RootState) => state)
+    const dispatch = useDispatch()
     const [expanded, setExpanded] = useState(false)
     const { search } = useLocation()
     const [id, setId] = useState(search.split('=')[1])
@@ -29,9 +32,9 @@ const SingleCharacter = (props) => {
         }
     })
     useEffect(() => {
-        loading ? console.log(loading) : (
-            store.dispatch(setCharacter(data?.singleCharacter))
-        )
+        if (!loading) {
+            dispatch(setActiveCharacter(data?.singleCharacter))
+        }
     }, [data, loading])
 
     const handleExpandClick = () => {
@@ -45,7 +48,7 @@ const SingleCharacter = (props) => {
                 </>
             ) : (
                 <>
-                    <Grid component='section' container justifyContent='center'>
+                    {/* <Grid component='section' container justifyContent='center'>
                         <Grid item xs={8} key={character.name}>
 
                             <Card sx={{ minWidth: '30%', margin: '10px' }}>
@@ -75,7 +78,7 @@ const SingleCharacter = (props) => {
                             </Card>
 
                         </Grid>
-                    </Grid>
+                    </Grid> */}
                 </>
 
             )}

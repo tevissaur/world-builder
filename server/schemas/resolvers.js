@@ -121,6 +121,7 @@ const resolvers = {
         },
         world: async (parent, { name }) => {
             try {
+                console.log(name)
                 const world = await World.findOne({ name }).populate([
                     {
                         path: 'regions',

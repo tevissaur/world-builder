@@ -6,17 +6,16 @@ import SectionLeft from '../components/wiki/SectionLeft'
 import SectionRight from '../components/wiki/SectionRight'
 import Footer from '../components/wiki/Footer'
 import Box from "@mui/material/Box";
-import styled from "@mui/material/styles/styled";
 
 
 
-const WikiPageLayout = (props) => {
+const WikiPageLayout = () => {
 
 
 
     return (
         <Box component='section' className="wiki-site-wrapper">
-            <Nav categories={null} />
+            <Nav />
             <Header />
             <Quote />
 

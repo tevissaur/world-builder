@@ -170,3 +170,12 @@ export const SINGLE_GOD = gql`
       }
     }
 `
+
+export default {
+  GET_ME,
+  GET_USER_WORLDS,
+  GET_WORLD,
+  SINGLE_CHARACTER,
+  SINGLE_GOD,
+  SINGLE_RELIGION
+}
