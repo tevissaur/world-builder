@@ -18,7 +18,6 @@ const WikiPageLayout = () => {
             <Nav />
             <Header />
             <Quote />
-
             <SectionLeft />
             <SectionRight />
             <Footer />

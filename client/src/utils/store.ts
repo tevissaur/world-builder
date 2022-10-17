@@ -4,10 +4,8 @@ import userReducer from "./slices/userSlice"
 import worldReducer from "./slices/worldSlice"
 import characterReducer from "./slices/characterSlice"
 import religionReducer from "./slices/religionSlice"
-import godReducer from "./slices/godSlice"
 import { configureStore } from '@reduxjs/toolkit';
-import { api } from '../services/requests.service'
-
+import { api } from "./api"
 
 
 
@@ -21,7 +19,6 @@ const store = configureStore({
         world: worldReducer,
         character: characterReducer,
         religion: religionReducer,
-        god: godReducer,
         [api.reducerPath]: api.reducer
     },
     middleware: (getDefaultMiddleware) => 

@@ -9,7 +9,7 @@ import { Theme } from '@mui/system'
 
 const ImageBanner = styled(Box, { shouldForwardProp: (prop) => prop !== 'image' })(({ image, theme } : { image: string; theme?: Theme }) => ({
     height: '200px',
-    backgroundImage: `url(${image})`,
+    backgroundImage: `url('${image}')`,
     backgroundSize: 'cover',
     backgroundPosition: 'center',
     position: 'relative'

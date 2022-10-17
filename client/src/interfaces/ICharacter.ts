@@ -10,6 +10,7 @@ export interface Class {
 
 
 export interface Character {
+    _id?: string;
     name: string;
     description: string;
     size: string;
@@ -19,4 +20,5 @@ export interface Character {
     bonds: [];
     goals: [];
     fears: [];
+    isNPC: boolean;
 }

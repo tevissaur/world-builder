@@ -23,7 +23,8 @@ const initialState: CharacterState = {
         backstory: '',
         bonds: [],
         goals: [],
-        fears: []
+        fears: [],
+        isNPC: false
     }
 }
 

@@ -1,11 +1,23 @@
-const { Schema, model } = require("mongoose");
+import { Schema, model } from 'mongoose';
 
+interface IWorld {
+    name: string;
+    creator: Schema.Types.ObjectId;
+    religions: Array<Schema.Types.ObjectId>;
+    classes: Array<Schema.Types.ObjectId>;
+    races: Array<Schema.Types.ObjectId>;
+    regions: Array<Schema.Types.ObjectId>;
+    historicalEvents: Array<Schema.Types.ObjectId>;
+    description: string;
+    wiki: Schema.Types.ObjectId;
 
-const worldSchema = new Schema({
+}
+
+const worldSchema = new Schema<IWorld>({
     name: {
         type: String,
         trim: true,
-        required: "World name is required"
+        required: true
     },
     creator: {
         type: Schema.Types.ObjectId,
@@ -41,22 +53,15 @@ const worldSchema = new Schema({
             ref: 'History'
         }
     ],
-    wikiCategories: [
-        {
-            type: Schema.Types.ObjectId,
-            ref: 'Category'
-        }
-    ],
     description: {
         type: String
     },
-    characters:[ {
+    wiki: {
         type: Schema.Types.ObjectId,
-        ref: 'Character'
-    }]
-
+        ref: 'Wiki'
+    }
 })
 
-const World = model('World', worldSchema) 
+const World = model<IWorld>('World', worldSchema) 
 
-module.exports = World
+export default World

@@ -19,15 +19,8 @@ export const worldSlice = createSlice({
         setOpenWorld: ((state, action: PayloadAction<World>) => {
             state.openWorld = action.payload
         }),
-        updateWorlds: ((state, action: PayloadAction<World>) => {
-            if (!state.worlds.includes(action.payload))
-                state.worlds.push(action.payload)
-            else
-                state.worlds = state.worlds.filter((world) => {
-                    if (world != action.payload) {
-                        return world
-                    }
-                })
+        updateWorlds: ((state, action: PayloadAction<Array<World>>) => {
+            state.worlds = action.payload
         })
     }
 })

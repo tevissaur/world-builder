@@ -10,7 +10,7 @@ import store, { RootState } from '../utils/store'
 import { useDispatch, useSelector } from "react-redux";
 import { setOpenWorld, updateWorlds } from "../utils/slices/worldSlice";
 import { World } from "../interfaces/IWorld";
-import { useGetMeQuery } from "../services/requests.service";
+import { useGetMeQuery } from "../services/worldMakerApi.service";
 import { setUserData } from "../utils/slices/userSlice";
 
 
@@ -32,8 +32,8 @@ const MainLayout = () => {
 
     useEffect(() => {
         if (!isLoading && !isError) {
-            console.log(data)
-            data.worlds.forEach((world: World) => dispatch(updateWorlds(world)))
+            
+            dispatch(updateWorlds(data.worlds))
             dispatch(setUserData(data))
             dispatch(setOpenWorld(data.worlds[0]))
         }

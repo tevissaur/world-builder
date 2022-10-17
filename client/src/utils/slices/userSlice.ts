@@ -3,11 +3,11 @@ import type { PayloadAction } from "@reduxjs/toolkit"
 import { User } from "../../interfaces/IUser"
 
 export interface UserState {
-    userData: User | undefined
+    userData: Object;
 }
 
 const initialState: UserState = {
-    userData: undefined
+    userData: {}
 }
 
 export const userSlice = createSlice({

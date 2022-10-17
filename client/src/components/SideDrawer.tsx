@@ -19,7 +19,7 @@ import styled from '@mui/material/styles/styled'
 import { RootState } from "../utils/store"
 import { useDispatch, useSelector } from "react-redux"
 import { setOpenWorld } from "../utils/slices/worldSlice"
-import { useLazyGetWorldQuery } from "../services/requests.service"
+import { useLazyGetWorldQuery } from "../services/worldMakerApi.service"
 
 
 const drawerWidth = 240;
