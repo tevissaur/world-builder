@@ -1,4 +1,4 @@
-import { Schema, model } from "mongoose";
+import { Schema, Types, model } from "mongoose";
 
 interface ILandmark {
     name: string;
@@ -25,4 +25,4 @@ const landmarkSchema = new Schema<ILandmark>({
 
 const Landmark = model<ILandmark>('Landmark', landmarkSchema)
 
-module.exports = Landmark
+export default Landmark

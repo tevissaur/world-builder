@@ -1,6 +1,13 @@
-const { Schema, model } = require("mongoose");
+import { Schema, model, Types } from "mongoose";
 
-const monsterSchema = new Schema({
+interface IMonster {
+    name: string;
+    description: string;
+    size: string;
+    regions: Array<Types.ObjectId>
+}
+
+const monsterSchema = new Schema<IMonster>({
     name: {
         type: String,
         required: true,
@@ -14,12 +21,12 @@ const monsterSchema = new Schema({
     },
     regions: [
         {
-            type: String,
+            type: Schema.Types.ObjectId,
             ref: 'Region'
         }
     ]
 });
 
-const Monster = model('Monster', monsterSchema)
+const Monster = model<IMonster>('Monster', monsterSchema)
 
-module.exports = Monster
+export default Monster

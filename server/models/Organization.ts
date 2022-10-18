@@ -1,6 +1,20 @@
-const { Schema, model } = require("mongoose");
+import { Schema, model, Types } from "mongoose";
 
-const orgSchema = new Schema({
+interface IOrganization {
+    name: string;
+    motives: {
+        bonds: Array<string>;
+        goals: Array<string>;
+        fears: Array<string>;
+    }
+    relationships: {
+        friends: Array<Types.ObjectId>
+        enemies: Array<Types.ObjectId>
+    }
+    activeRegions: Array<Types.ObjectId>
+}
+
+const orgSchema = new Schema<IOrganization>({
     name: {
         type: String,
         required: true,
@@ -23,12 +37,6 @@ const orgSchema = new Schema({
             }
         ]
     },
-    members: [
-        {
-            type: String,
-            ref: 'Character'
-        }
-    ],
     relationships: {
         friends: [
             {
@@ -51,6 +59,7 @@ const orgSchema = new Schema({
     ]
 })
 
-const Organization = model('Organization', orgSchema)
+const Organization = model<IOrganization>('Organization', orgSchema)
 
-module.exports = Organization
+
+export default Organization

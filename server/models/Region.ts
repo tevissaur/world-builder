@@ -18,4 +18,4 @@ const regionSchema = new Schema<IRegion>({
 
 const Region = model<IRegion>('Region', regionSchema)
 
-module.exports = Region
+export default Region

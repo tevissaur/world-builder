@@ -1,11 +1,14 @@
 import Article from './Article'
+import Calendar from './Calendar'
 import Category from './Category'
 import Character from './Character'
 import City from './City'
 import Country from './Country'
 import Class from './Class'
+import Event from './Event'
 import Game from './Game'
 import God from './God'
+import GodDomain from './GodDomain'
 import History from './History'
 import Landmark from './Landmark'
 import Monster from './Monster'
@@ -22,19 +25,21 @@ import World from './World'
 
 export {
     Article,
+    Calendar,
     Category,
     Character,
     City,
     Country,
     Class,
+    Event,
     Game,
     God,
+    GodDomain,
     History,
     Landmark,
     Monster,
     Item,
     Organization,
-    Quote,
     Race,
     Region,
     Religion,

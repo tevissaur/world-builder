@@ -7,6 +7,7 @@ interface IUser {
   email: string;
   userCreated: Date;
   worlds: Array<Types.ObjectId>
+  isCorrectPassword: Function;
 }
 
 const userSchema = new Schema<IUser>({
@@ -56,6 +57,6 @@ userSchema.methods.isCorrectPassword = async function (password) {
   return bcrypt.compare(password, this.password);
 };
 
-const User = model("User", userSchema);
+const User = model<IUser>("User", userSchema);
 
 export default User;

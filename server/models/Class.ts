@@ -1,24 +1,20 @@
-const { Schema, model } = require("mongoose");
+import { Schema, model } from "mongoose";
 
-const classSchema = new Schema({
+interface IClass {
+    name: string;
+    description: string;
+}
+
+const classSchema = new Schema<IClass>({
     name: {
         type: String,
-        required: "Please enter the name of the race"
+        required: true
     },
     description: {
         type: String
     },
-    // subclasses: {
-    //     name: {
-    //         type: String,
-    //         required: "Please enter the name of the subrace"
-    //     },
-    //     description: {
-    //         type: String
-    //     }
-    // }
 });
 
-const Class = model('Class', classSchema)
+const Class = model<IClass>('Class', classSchema)
 
-module.exports = Class
+export default Class

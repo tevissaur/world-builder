@@ -23,15 +23,14 @@ const CalendarSchema = new Schema<ICalendar>({
     week: {
         numDaysPerWeek: Number,
         days: [{
-            name: String
+            name: String,
         }]
     },
     numDaysPerYear: {
         type: Number
-    },
-    events: String
+    }
 })
 
-const Calendar = model<ICalendar>('Calender', CalendarSchema)
+const Calendar = model<ICalendar>('Calendar', CalendarSchema)
 
 export default Calendar

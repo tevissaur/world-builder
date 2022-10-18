@@ -1,4 +1,4 @@
-import { Article, Character, Country, Class, City, Race, User, World, Religion, God, Monster, Region, Game } from '../models'
+import { Character, Country, Class, City, Race, User, World, Religion, God, Monster, Region } from '../models'
 
 import { signToken } from '../utils/auth'
 
@@ -203,26 +203,7 @@ const resolvers = {
         },
         singleRegion: async (parent, { _id }) => {
             try {
-                return Region.findById(_id).populate([
-                    {
-                        path: 'countries',
-                        model: 'Country',
-                        populate: [
-                            {
-                                path: 'cities',
-                                model: 'City'
-                            },
-                            {
-                                path: 'religions',
-                                model: 'Religion',
-                                poplulate: {
-                                    path: 'gods',
-                                    model: 'God'
-                                }
-                            }
-                        ]
-                    }
-                ])
+                return Region.findById(_id)
             } catch (error) {
                 console.log(error)
                 return error
@@ -264,8 +245,6 @@ const resolvers = {
                 console.log(err)
             }
         },
-
-
         createWorld: async (parent, { world }) => {
             try {
                 const newWorld = await World.create(world)
@@ -337,8 +316,6 @@ const resolvers = {
                 return err
             }
         },
-
-
         createCharacter: async (parent, { character, worldId }) => {
             try {
                 const newCharacter = await Character.create(character)
@@ -490,8 +467,6 @@ const resolvers = {
             }
 
         },
-
-
         createMonster: async (parent, { monster, worldId, regionId }) => {
             try {
                 const newMonster = await Monster.create(monster)
@@ -662,8 +637,6 @@ const resolvers = {
                 console.log(error)
             }
         },
-
-
         createRegion: async (parent, { region, worldId }) => {
             try {
                 const newRegion = await Region.create(region)
@@ -812,8 +785,6 @@ const resolvers = {
                 console.log(error)
             }
         },
-
-
         createReligion: async (parent, { religion, worldId }) => {
             try {
                 const newReligion = await Religion.create(religion)
@@ -916,7 +887,7 @@ const resolvers = {
         },
         deleteReligion: async (parent, { religionId, worldId }) => {
             try {
-                const deleted = await Religion.findByIdAndDelete(regionId)
+                const deleted = await Religion.findByIdAndDelete(religionId)
                 const world = await World.findById(worldId).populate([
                     {
                         path: 'regions',
@@ -962,8 +933,6 @@ const resolvers = {
                 console.log(error)
             }
         },
-
-
         createGod: async (parent, { god, worldId, religionId }) => {
             try {
                 const newGod = await God.create(god)
@@ -1113,11 +1082,9 @@ const resolvers = {
             } catch (error) {
                 console.log(error)
             }
-        },
-
-
-
+        }
     }
 
 }
-module.exports = resolvers;
+
+export default resolvers;
