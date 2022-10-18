@@ -1,6 +1,6 @@
 import { Schema, model } from 'mongoose';
 
-interface IWorld {
+export interface IWorld {
     name: string;
     creator: Schema.Types.ObjectId;
     religions: Array<Schema.Types.ObjectId>;
@@ -10,7 +10,6 @@ interface IWorld {
     historicalEvents: Array<Schema.Types.ObjectId>;
     description: string;
     wiki: Schema.Types.ObjectId;
-
 }
 
 const worldSchema = new Schema<IWorld>({

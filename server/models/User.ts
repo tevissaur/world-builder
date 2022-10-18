@@ -1,17 +1,25 @@
-const { Schema, model } = require("mongoose");
-const bcrypt = require('bcrypt');
+import { Schema, model, Types } from "mongoose";
+import bcrypt from 'bcrypt';
 
-const userSchema = new Schema({
+interface IUser {
+  username: string;
+  password: string;
+  email: string;
+  userCreated: Date;
+  worlds: Array<Types.ObjectId>
+}
+
+const userSchema = new Schema<IUser>({
   username: {
     type: String,
     trim: true,
-    required: "Username is Required"
+    required: true
   },
 
   password: {
     type: String,
     trim: true,
-    required: "Password is Required",
+    required: true,
     validate: [({ length }) => length >= 6, "Password should be longer."]
   },
 
@@ -50,4 +58,4 @@ userSchema.methods.isCorrectPassword = async function (password) {
 
 const User = model("User", userSchema);
 
-module.exports = User;
+export default User;

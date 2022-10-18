@@ -1,21 +1,20 @@
 import { Schema, Types, model } from "mongoose";
 
-
-interface IRegion {
+interface IGodDomain {
     name: string;
     description: string;
 }
 
-const regionSchema = new Schema<IRegion>({
+const GodDomainSchema = new Schema<IGodDomain>({
     name: {
         type: String,
         required: true
     },
     description: {
         type: String
-    },
-});
+    }
+})
 
-const Region = model<IRegion>('Region', regionSchema)
+const GodDomain = model<IGodDomain>('GodDomain', GodDomainSchema)
 
-module.exports = Region
+export default GodDomain

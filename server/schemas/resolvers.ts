@@ -1,6 +1,6 @@
-const { Character, Country, Class, City, Race, User, World, Religion, God, Monster, Region } = require('../models')
+import { Article, Character, Country, Class, City, Race, User, World, Religion, God, Monster, Region, Game } from '../models'
 
-const { signToken } = require('../utils/auth')
+import { signToken } from '../utils/auth'
 
 
 const resolvers = {
@@ -250,13 +250,13 @@ const resolvers = {
                 const user = await User.findOne({ email })
 
                 if (!user) {
-                    throw new AuthenticationError('No Profile with that email')
+                    throw new Error('No Profile with that email')
                 }
 
                 const correctPw = await user.isCorrectPassword(password)
 
                 if (!correctPw) {
-                    throw new AuthenticationError('Incorrect password!');
+                    throw new Error('Incorrect password!');
                 }
                 const token = signToken(user)
                 return { token, user }
@@ -318,6 +318,7 @@ const resolvers = {
                 return err
             }
         },
+        // TODO: Optimize this shit
         updateWorld: async (parent, { world }) => {
             try {
                 const updatedWorld = await World.findByIdAndUpdate(world._id, { $set: { ...world } }, { new: true })

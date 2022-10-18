@@ -1,9 +1,9 @@
-import { Schema, model } from "mongoose";
+import { Schema, Types, model } from "mongoose";
 
 interface ICity {
     name: string;
-    notableCharacters: Array<Schema.Types.ObjectId>;
-    country: Schema.Types.ObjectId;
+    notableCharacters: Array<Types.ObjectId>;
+    country: Types.ObjectId;
 }
 
 

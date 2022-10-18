@@ -1,4 +1,4 @@
-import { Schema, model } from "mongoose";
+import { Schema, Types, model } from "mongoose";
 
 type Government = {
     keyMembers: [{
@@ -41,5 +41,5 @@ const countrySchema = new Schema<ICountry>({
 
 const Country = model<ICountry>('Country', countrySchema)
 
-module.exports = Country
+export default Country
 

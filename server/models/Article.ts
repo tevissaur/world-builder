@@ -1,12 +1,12 @@
-import { Schema, model } from 'mongoose'
+import { Schema, Types, model } from 'mongoose'
 
 
-interface IArticle {
-    subject: Schema.Types.ObjectId;
+export interface IArticle {
+    subject: Types.ObjectId;
     subjectModel: string;
     title: string;
     body: string;
-    category: Schema.Types.ObjectId;
+    category: Types.ObjectId;
 }
 
 const ArticleSchema = new Schema<IArticle>({
@@ -37,4 +37,4 @@ const ArticleSchema = new Schema<IArticle>({
 
 const Article = model<IArticle>('Article', ArticleSchema)
 
-module.exports = Article
+export default Article

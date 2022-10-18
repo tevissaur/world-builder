@@ -1,24 +1,24 @@
-import { Schema, model } from 'mongoose';
+import { Schema, Types, model } from 'mongoose';
 
 interface ICharacterClasses {
-    class: Schema.Types.ObjectId;
+    class: Types.ObjectId;
     level: number;
 }
 
 interface ICharacter {
-    world: Schema.Types.ObjectId;
-    creator: Schema.Types.ObjectId;
+    world: Types.ObjectId;
+    creator: Types.ObjectId;
     name: string;
     description: string;
     size: string;
-    race: Schema.Types.ObjectId;
+    race: Types.ObjectId;
     classes: Array<ICharacterClasses>;
     backstory: string;
     bonds: Array<string>;
     goals: Array<string>;
     fears: Array<string>;
     organizations: Array<Schema.Types.ObjectId>;
-    residentCity: Schema.Types.ObjectId;
+    residentCity: Types.ObjectId;
     isNPC: boolean;
 }
 
@@ -80,4 +80,4 @@ const CharacterSchema = new Schema<ICharacter>({
 
 const Character = model<ICharacter>('Character', CharacterSchema)
 
-module.exports = Character
+export default Character
